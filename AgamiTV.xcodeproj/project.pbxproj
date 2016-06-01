@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		805959D21CEF998700863A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959D11CEF998700863A14 /* AppDelegate.swift */; };
+		805959D71CEF998700863A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805959D51CEF998700863A14 /* Main.storyboard */; };
+		805959DA1CEF998700863A14 /* Agamitv.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 805959D81CEF998700863A14 /* Agamitv.xcdatamodeld */; };
+		805959DC1CEF998700863A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805959DB1CEF998700863A14 /* Assets.xcassets */; };
+		805959DF1CEF998700863A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805959DD1CEF998700863A14 /* LaunchScreen.storyboard */; };
+		805959EA1CEF998700863A14 /* AgamitvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959E91CEF998700863A14 /* AgamitvTests.swift */; };
+		805959F51CEF998700863A14 /* AgamitvUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959F41CEF998700863A14 /* AgamitvUITests.swift */; };
+		80699FB81CFE2936005C2BD7 /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FB71CFE2936005C2BD7 /* RecentTVC.swift */; };
+		80699FBA1CFE297B005C2BD7 /* RecentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FB91CFE297B005C2BD7 /* RecentCell.swift */; };
+		80699FBC1CFE3D30005C2BD7 /* UpcomingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */; };
+		80699FBE1CFE3DBE005C2BD7 /* UpcomingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */; };
+		80906A661CFA9618007F437E /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80906A621CFA9618007F437E /* Assets.bundle */; };
+		80906A671CFA9618007F437E /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80906A641CFA9618007F437E /* YTPlayerView.m */; };
+		80906A6D1CFA9910007F437E /* LiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A6C1CFA9910007F437E /* LiveVC.swift */; };
+		80906A9C1CFCEF8C007F437E /* VimeoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A9B1CFCEF8C007F437E /* VimeoVC.swift */; };
+		80906A9E1CFD1DE7007F437E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A9D1CFD1DE7007F437E /* Util.swift */; };
+		80D4B0FA1CF9096A0077248E /* PopularTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B0F91CF9096A0077248E /* PopularTVC.swift */; };
+		80D4B0FC1CF90DC50077248E /* VideoResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B0FB1CF90DC50077248E /* VideoResource.swift */; };
+		80D4B0FE1CF98A710077248E /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B0FD1CF98A710077248E /* PopularCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		805959E61CEF998700863A14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 805959C61CEF998700863A14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 805959CD1CEF998700863A14;
+			remoteInfo = Agamitv;
+		};
+		805959F11CEF998700863A14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 805959C61CEF998700863A14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 805959CD1CEF998700863A14;
+			remoteInfo = Agamitv;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		805959CE1CEF998700863A14 /* AgamiTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgamiTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		805959D11CEF998700863A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		805959D61CEF998700863A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		805959D91CEF998700863A14 /* Agamitv.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Agamitv.xcdatamodel; sourceTree = "<group>"; };
+		805959DB1CEF998700863A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		805959DE1CEF998700863A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		805959E01CEF998700863A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		805959E51CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgamiTV.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		805959E91CEF998700863A14 /* AgamitvTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgamitvTests.swift; sourceTree = "<group>"; };
+		805959EB1CEF998700863A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		805959F01CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgamiTV.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		805959F41CEF998700863A14 /* AgamitvUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgamitvUITests.swift; sourceTree = "<group>"; };
+		805959F61CEF998700863A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80699FB71CFE2936005C2BD7 /* RecentTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
+		80699FB91CFE297B005C2BD7 /* RecentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCell.swift; sourceTree = "<group>"; };
+		80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingCell.swift; sourceTree = "<group>"; };
+		80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingTVC.swift; sourceTree = "<group>"; };
+		80906A621CFA9618007F437E /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
+		80906A631CFA9618007F437E /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		80906A641CFA9618007F437E /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		80906A651CFA9618007F437E /* YouTubeiOSPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeiOSPlayerHelper.h; sourceTree = "<group>"; };
+		80906A6C1CFA9910007F437E /* LiveVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveVC.swift; path = ../LiveVC.swift; sourceTree = "<group>"; };
+		80906A9B1CFCEF8C007F437E /* VimeoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoVC.swift; sourceTree = "<group>"; };
+		80906A9D1CFD1DE7007F437E /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		80D4B0F91CF9096A0077248E /* PopularTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularTVC.swift; sourceTree = "<group>"; };
+		80D4B0FB1CF90DC50077248E /* VideoResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoResource.swift; sourceTree = "<group>"; };
+		80D4B0FD1CF98A710077248E /* PopularCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularCell.swift; path = ../PopularCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		805959CB1CEF998700863A14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805959E21CEF998700863A14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805959ED1CEF998700863A14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		805959C51CEF998700863A14 = {
+			isa = PBXGroup;
+			children = (
+				805959D01CEF998700863A14 /* Agamitv */,
+				805959E81CEF998700863A14 /* AgamitvTests */,
+				805959F31CEF998700863A14 /* AgamitvUITests */,
+				805959CF1CEF998700863A14 /* Products */,
+				80906A681CFA9649007F437E /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		805959CF1CEF998700863A14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				805959CE1CEF998700863A14 /* AgamiTV.app */,
+				805959E51CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */,
+				805959F01CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		805959D01CEF998700863A14 /* Agamitv */ = {
+			isa = PBXGroup;
+			children = (
+				805959D51CEF998700863A14 /* Main.storyboard */,
+				80906A6C1CFA9910007F437E /* LiveVC.swift */,
+				80699FB71CFE2936005C2BD7 /* RecentTVC.swift */,
+				80D4B0F91CF9096A0077248E /* PopularTVC.swift */,
+				80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */,
+				80699FB91CFE297B005C2BD7 /* RecentCell.swift */,
+				80D4B0FD1CF98A710077248E /* PopularCell.swift */,
+				80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */,
+				80D4B0FB1CF90DC50077248E /* VideoResource.swift */,
+				80906A9B1CFCEF8C007F437E /* VimeoVC.swift */,
+				80906A9D1CFD1DE7007F437E /* Util.swift */,
+				805959DB1CEF998700863A14 /* Assets.xcassets */,
+				805959D11CEF998700863A14 /* AppDelegate.swift */,
+				805959D81CEF998700863A14 /* Agamitv.xcdatamodeld */,
+				805959DD1CEF998700863A14 /* LaunchScreen.storyboard */,
+				805959E01CEF998700863A14 /* Info.plist */,
+			);
+			path = Agamitv;
+			sourceTree = "<group>";
+		};
+		805959E81CEF998700863A14 /* AgamitvTests */ = {
+			isa = PBXGroup;
+			children = (
+				805959E91CEF998700863A14 /* AgamitvTests.swift */,
+				805959EB1CEF998700863A14 /* Info.plist */,
+			);
+			path = AgamitvTests;
+			sourceTree = "<group>";
+		};
+		805959F31CEF998700863A14 /* AgamitvUITests */ = {
+			isa = PBXGroup;
+			children = (
+				805959F41CEF998700863A14 /* AgamitvUITests.swift */,
+				805959F61CEF998700863A14 /* Info.plist */,
+			);
+			path = AgamitvUITests;
+			sourceTree = "<group>";
+		};
+		80906A681CFA9649007F437E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80906A691CFA9668007F437E /* Development Pods */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		80906A691CFA9668007F437E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80906A6A1CFA9680007F437E /* YouTube-Player-iOS-Helper */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		80906A6A1CFA9680007F437E /* YouTube-Player-iOS-Helper */ = {
+			isa = PBXGroup;
+			children = (
+				80906A6B1CFA97AB007F437E /* Resources */,
+				80906A631CFA9618007F437E /* YTPlayerView.h */,
+				80906A641CFA9618007F437E /* YTPlayerView.m */,
+				80906A651CFA9618007F437E /* YouTubeiOSPlayerHelper.h */,
+			);
+			name = "YouTube-Player-iOS-Helper";
+			sourceTree = "<group>";
+		};
+		80906A6B1CFA97AB007F437E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80906A621CFA9618007F437E /* Assets.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		805959CD1CEF998700863A14 /* Agamitv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 805959F91CEF998700863A14 /* Build configuration list for PBXNativeTarget "Agamitv" */;
+			buildPhases = (
+				805959CA1CEF998700863A14 /* Sources */,
+				805959CB1CEF998700863A14 /* Frameworks */,
+				805959CC1CEF998700863A14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Agamitv;
+			productName = Agamitv;
+			productReference = 805959CE1CEF998700863A14 /* AgamiTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		805959E41CEF998700863A14 /* AgamitvTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 805959FC1CEF998700863A14 /* Build configuration list for PBXNativeTarget "AgamitvTests" */;
+			buildPhases = (
+				805959E11CEF998700863A14 /* Sources */,
+				805959E21CEF998700863A14 /* Frameworks */,
+				805959E31CEF998700863A14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				805959E71CEF998700863A14 /* PBXTargetDependency */,
+			);
+			name = AgamitvTests;
+			productName = AgamitvTests;
+			productReference = 805959E51CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		805959EF1CEF998700863A14 /* AgamitvUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 805959FF1CEF998700863A14 /* Build configuration list for PBXNativeTarget "AgamitvUITests" */;
+			buildPhases = (
+				805959EC1CEF998700863A14 /* Sources */,
+				805959ED1CEF998700863A14 /* Frameworks */,
+				805959EE1CEF998700863A14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				805959F21CEF998700863A14 /* PBXTargetDependency */,
+			);
+			name = AgamitvUITests;
+			productName = AgamitvUITests;
+			productReference = 805959F01CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		805959C61CEF998700863A14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Agavi TV";
+				TargetAttributes = {
+					805959CD1CEF998700863A14 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = H8W335K377;
+					};
+					805959E41CEF998700863A14 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 805959CD1CEF998700863A14;
+					};
+					805959EF1CEF998700863A14 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 805959CD1CEF998700863A14;
+					};
+				};
+			};
+			buildConfigurationList = 805959C91CEF998700863A14 /* Build configuration list for PBXProject "AgamiTV" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				da,
+				de,
+				"es-ES",
+				es,
+				fr,
+				ja,
+				pt,
+				"zh-Hans",
+				"zh-Hant",
+			);
+			mainGroup = 805959C51CEF998700863A14;
+			productRefGroup = 805959CF1CEF998700863A14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				805959CD1CEF998700863A14 /* Agamitv */,
+				805959E41CEF998700863A14 /* AgamitvTests */,
+				805959EF1CEF998700863A14 /* AgamitvUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		805959CC1CEF998700863A14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80906A661CFA9618007F437E /* Assets.bundle in Resources */,
+				805959DF1CEF998700863A14 /* LaunchScreen.storyboard in Resources */,
+				805959DC1CEF998700863A14 /* Assets.xcassets in Resources */,
+				805959D71CEF998700863A14 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805959E31CEF998700863A14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805959EE1CEF998700863A14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		805959CA1CEF998700863A14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80906A6D1CFA9910007F437E /* LiveVC.swift in Sources */,
+				805959DA1CEF998700863A14 /* Agamitv.xcdatamodeld in Sources */,
+				80906A9C1CFCEF8C007F437E /* VimeoVC.swift in Sources */,
+				80699FBA1CFE297B005C2BD7 /* RecentCell.swift in Sources */,
+				80699FB81CFE2936005C2BD7 /* RecentTVC.swift in Sources */,
+				80D4B0FC1CF90DC50077248E /* VideoResource.swift in Sources */,
+				80D4B0FE1CF98A710077248E /* PopularCell.swift in Sources */,
+				80D4B0FA1CF9096A0077248E /* PopularTVC.swift in Sources */,
+				80906A9E1CFD1DE7007F437E /* Util.swift in Sources */,
+				805959D21CEF998700863A14 /* AppDelegate.swift in Sources */,
+				80699FBE1CFE3DBE005C2BD7 /* UpcomingTVC.swift in Sources */,
+				80699FBC1CFE3D30005C2BD7 /* UpcomingCell.swift in Sources */,
+				80906A671CFA9618007F437E /* YTPlayerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805959E11CEF998700863A14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				805959EA1CEF998700863A14 /* AgamitvTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805959EC1CEF998700863A14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				805959F51CEF998700863A14 /* AgamitvUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		805959E71CEF998700863A14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 805959CD1CEF998700863A14 /* Agamitv */;
+			targetProxy = 805959E61CEF998700863A14 /* PBXContainerItemProxy */;
+		};
+		805959F21CEF998700863A14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 805959CD1CEF998700863A14 /* Agamitv */;
+			targetProxy = 805959F11CEF998700863A14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		805959D51CEF998700863A14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				805959D61CEF998700863A14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		805959DD1CEF998700863A14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				805959DE1CEF998700863A14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		805959F71CEF998700863A14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		805959F81CEF998700863A14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		805959FA1CEF998700863A14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				INFOPLIST_FILE = Agamitv/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "agamitv-test1";
+				PRODUCT_NAME = AgamiTV;
+				SWIFT_OBJC_BRIDGING_HEADER = $PROJECT_DIR/YouTubeiOSPlayerHelper.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		805959FB1CEF998700863A14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				INFOPLIST_FILE = Agamitv/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "agamitv-test1";
+				PRODUCT_NAME = AgamiTV;
+				SWIFT_OBJC_BRIDGING_HEADER = $PROJECT_DIR/YouTubeiOSPlayerHelper.h;
+			};
+			name = Release;
+		};
+		805959FD1CEF998700863A14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AgamitvTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = agamitv.com.AgamitvTests;
+				PRODUCT_NAME = AgamiTV.temp_caseinsensitive_rename;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AgamiTV.temp_caseinsensitive_rename.app/AgamiTV.temp_caseinsensitive_rename";
+			};
+			name = Debug;
+		};
+		805959FE1CEF998700863A14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AgamitvTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = agamitv.com.AgamitvTests;
+				PRODUCT_NAME = AgamiTV.temp_caseinsensitive_rename;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AgamiTV.temp_caseinsensitive_rename.app/AgamiTV.temp_caseinsensitive_rename";
+			};
+			name = Release;
+		};
+		80595A001CEF998700863A14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AgamitvUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = agamitv.com.AgamitvUITests;
+				PRODUCT_NAME = AgamiTV.temp_caseinsensitive_rename;
+				TEST_TARGET_NAME = Agamitv;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		80595A011CEF998700863A14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AgamitvUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = agamitv.com.AgamitvUITests;
+				PRODUCT_NAME = AgamiTV.temp_caseinsensitive_rename;
+				TEST_TARGET_NAME = Agamitv;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		805959C91CEF998700863A14 /* Build configuration list for PBXProject "AgamiTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				805959F71CEF998700863A14 /* Debug */,
+				805959F81CEF998700863A14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		805959F91CEF998700863A14 /* Build configuration list for PBXNativeTarget "Agamitv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				805959FA1CEF998700863A14 /* Debug */,
+				805959FB1CEF998700863A14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		805959FC1CEF998700863A14 /* Build configuration list for PBXNativeTarget "AgamitvTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				805959FD1CEF998700863A14 /* Debug */,
+				805959FE1CEF998700863A14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		805959FF1CEF998700863A14 /* Build configuration list for PBXNativeTarget "AgamitvUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80595A001CEF998700863A14 /* Debug */,
+				80595A011CEF998700863A14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		805959D81CEF998700863A14 /* Agamitv.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				805959D91CEF998700863A14 /* Agamitv.xcdatamodel */,
+			);
+			currentVersion = 805959D91CEF998700863A14 /* Agamitv.xcdatamodel */;
+			path = Agamitv.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 805959C61CEF998700863A14 /* Project object */;
+}
