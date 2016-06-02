@@ -10,9 +10,12 @@ import UIKit
 
 class UpcomingCell: UITableViewCell {
     
+    @IBOutlet weak var backGround: UIImageView!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var eventOn: UILabel!
+    var imageUrl: NSURL!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,9 +10,11 @@ import UIKit
 
 class RecentCell: UITableViewCell {
     
+    @IBOutlet weak var backGround: UIImageView!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var addedOn: UILabel!
+    var imageUrl: NSURL!
     
     override func awakeFromNib() {
         super.awakeFromNib()

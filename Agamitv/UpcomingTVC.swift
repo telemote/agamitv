@@ -123,13 +123,29 @@ class UpcomingTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 name: "Helvetica-bold",
                 size: 13.0)!])
         
-       // cell.eventOn?.font = cell.eventOn?.font.fontWithSize(11)
-        //cell.eventOn.text = "Event on " + videos[indexPath.row].date
-        
+        // Image loading.
         let url = NSURL(string: videos[indexPath.row].imageUrl)
-        let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        cell.thumbnail.image = UIImage(data: data!)
-        
+        cell.imageUrl = url // For recycled cells' late image loads.
+        if let image = cell.imageUrl.cachedImage {
+            // Cached: set immediately.
+            cell.thumbnail.image = image
+            cell.backGround.alpha=0
+            cell.thumbnail.alpha = 1
+        } else {
+            // Not cached, so load then fade it in.
+            cell.thumbnail.alpha = 0
+            cell.backGround.alpha=1
+            cell.imageUrl.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+                if cell.imageUrl.absoluteString == self.videos[indexPath.row].imageUrl {
+                    cell.thumbnail.image = image
+                    UIView.animateWithDuration(0.3) {
+                        cell.backGround.alpha=0
+                        cell.thumbnail.alpha = 1
+                    }
+                }
+            }
+        }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell

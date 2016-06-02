@@ -48,8 +48,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-k3-JXh">
+                                                    <rect key="frame" x="13" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="0DB-SJ-QbU"/>
+                                                        <constraint firstAttribute="height" constant="100" id="F2y-sa-x5C"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="jQu-k3-JXh" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="-8" id="8Zd-Ct-kSo"/>
                                                 <constraint firstItem="OPf-Ka-s3i" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="-8" id="9rX-e0-Azo"/>
                                                 <constraint firstItem="OPf-Ka-s3i" firstAttribute="leading" secondItem="Bx4-Q5-UwJ" secondAttribute="trailing" constant="8" id="ISn-HH-adt"/>
                                                 <constraint firstItem="erp-qB-tdq" firstAttribute="top" secondItem="OPf-Ka-s3i" secondAttribute="bottom" constant="4" id="LZc-dK-VVf"/>
@@ -57,9 +65,11 @@
                                                 <constraint firstItem="Bx4-Q5-UwJ" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="-8" id="Q6r-uz-FDS"/>
                                                 <constraint firstItem="Bx4-Q5-UwJ" firstAttribute="leading" secondItem="N8G-iY-nX0" secondAttribute="leadingMargin" constant="5" id="Yar-Gx-Ddg"/>
                                                 <constraint firstItem="erp-qB-tdq" firstAttribute="leading" secondItem="Bx4-Q5-UwJ" secondAttribute="trailing" constant="8" id="wu0-Fm-Zbw"/>
+                                                <constraint firstItem="jQu-k3-JXh" firstAttribute="leading" secondItem="N8G-iY-nX0" secondAttribute="leadingMargin" constant="5" id="zjH-dU-M6f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="backGround" destination="jQu-k3-JXh" id="3r3-oj-0QR"/>
                                             <outlet property="desc" destination="OPf-Ka-s3i" id="vFM-WQ-gUX"/>
                                             <outlet property="eventOn" destination="erp-qB-tdq" id="hGj-QS-b16"/>
                                             <outlet property="thumbnail" destination="Bx4-Q5-UwJ" id="td3-fB-8q5"/>
@@ -132,11 +142,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b36-Dt-fnQ">
+                                                    <rect key="frame" x="13" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="KYe-ni-TOi"/>
+                                                        <constraint firstAttribute="width" constant="100" id="NTH-fK-8eK"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="b36-Dt-fnQ" firstAttribute="top" secondItem="TQy-sK-eqN" secondAttribute="topMargin" constant="-8" id="EJO-Ij-dIr"/>
                                                 <constraint firstItem="88S-Ep-bKF" firstAttribute="leading" secondItem="TQy-sK-eqN" secondAttribute="leadingMargin" constant="5" id="K0P-eW-ewW"/>
                                                 <constraint firstItem="cWr-xl-03j" firstAttribute="leading" secondItem="88S-Ep-bKF" secondAttribute="trailing" constant="8" id="LZf-R9-Gzq"/>
                                                 <constraint firstItem="88S-Ep-bKF" firstAttribute="top" secondItem="TQy-sK-eqN" secondAttribute="topMargin" constant="-8" id="WNv-dz-4ZX"/>
+                                                <constraint firstItem="b36-Dt-fnQ" firstAttribute="leading" secondItem="TQy-sK-eqN" secondAttribute="leadingMargin" constant="5" id="ZOY-ak-URa"/>
                                                 <constraint firstItem="cEZ-tJ-nhV" firstAttribute="trailing" secondItem="TQy-sK-eqN" secondAttribute="trailingMargin" constant="5" id="aqo-Vj-IQq"/>
                                                 <constraint firstItem="cEZ-tJ-nhV" firstAttribute="leading" secondItem="88S-Ep-bKF" secondAttribute="trailing" constant="8" id="awB-SO-uf0"/>
                                                 <constraint firstItem="cWr-xl-03j" firstAttribute="top" secondItem="cEZ-tJ-nhV" secondAttribute="bottom" constant="4" id="nes-wX-Gnc"/>
@@ -145,6 +164,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addedOn" destination="cWr-xl-03j" id="lT1-sH-Sas"/>
+                                            <outlet property="backGround" destination="b36-Dt-fnQ" id="6xQ-hH-NiH"/>
                                             <outlet property="desc" destination="cEZ-tJ-nhV" id="bF1-GR-xxy"/>
                                             <outlet property="thumbnail" destination="88S-Ep-bKF" id="dFu-OM-qqt"/>
                                         </connections>
@@ -216,10 +236,19 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yjv-xx-shR">
+                                                    <rect key="frame" x="13" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="TpO-GQ-D0C"/>
+                                                        <constraint firstAttribute="width" constant="100" id="e1d-yX-fRx"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="yjv-xx-shR" firstAttribute="leading" secondItem="nSW-IZ-Mqs" secondAttribute="leadingMargin" constant="5" id="De4-0c-hvN"/>
                                                 <constraint firstItem="Aya-rL-fVh" firstAttribute="leading" secondItem="vKt-JR-T65" secondAttribute="trailing" constant="8" id="SSA-WA-5LM"/>
                                                 <constraint firstItem="vKt-JR-T65" firstAttribute="top" secondItem="nSW-IZ-Mqs" secondAttribute="topMargin" constant="-8" id="WG2-Az-jZF"/>
+                                                <constraint firstItem="yjv-xx-shR" firstAttribute="top" secondItem="nSW-IZ-Mqs" secondAttribute="topMargin" constant="-8" id="WYs-8o-tNF"/>
                                                 <constraint firstItem="vKt-JR-T65" firstAttribute="leading" secondItem="nSW-IZ-Mqs" secondAttribute="leadingMargin" constant="5" id="eCu-6G-tB6"/>
                                                 <constraint firstItem="t3x-Lx-ac3" firstAttribute="top" secondItem="Aya-rL-fVh" secondAttribute="bottom" constant="4" id="i2Q-F1-nbc"/>
                                                 <constraint firstItem="t3x-Lx-ac3" firstAttribute="leading" secondItem="vKt-JR-T65" secondAttribute="trailing" constant="8" id="iXX-V2-woa"/>
@@ -229,6 +258,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addedOn" destination="t3x-Lx-ac3" id="nFA-51-Ij4"/>
+                                            <outlet property="backGround" destination="yjv-xx-shR" id="V4d-Oq-v4d"/>
                                             <outlet property="desc" destination="Aya-rL-fVh" id="t52-5t-QkT"/>
                                             <outlet property="thumbnail" destination="vKt-JR-T65" id="QyW-4m-tri"/>
                                         </connections>
@@ -291,13 +321,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAv-L7-cnu">
                                                     <rect key="frame" x="121" y="0.0" width="476" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starts on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLo-lB-I79">
                                                     <rect key="frame" x="121" y="25" width="70" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -367,5 +397,6 @@
         <image name="Popular" width="50" height="50"/>
         <image name="Recent" width="50" height="50"/>
         <image name="Upcoming" width="60" height="60"/>
+        <image name="noimage.png" width="140" height="140"/>
     </resources>
 </document>
