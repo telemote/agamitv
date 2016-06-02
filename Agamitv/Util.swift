@@ -8,6 +8,11 @@
 
 import Foundation
 
+import UIKit
+import WebKit
+import AVKit
+import AVFoundation
+
 struct Constants {
     static let SERVER = "http://ww2.agamitv.com"
     static let IMAGE_BASE_PATH = SERVER + "/ios/image/"

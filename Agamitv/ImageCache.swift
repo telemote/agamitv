@@ -6,6 +6,13 @@
 //  Copyright © 2016 Agavi TV. All rights reserved.
 //
 
+import Foundation
+
+import UIKit
+import WebKit
+import AVKit
+import AVFoundation
+
 class MyImageCache {
     
     static let sharedCache: NSCache = {
