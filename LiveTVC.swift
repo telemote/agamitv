@@ -165,7 +165,7 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
-        
+        tabSwitch = false
         if(videos[indexPath.row].videoUrl.characters.count == 0) {
             let alert = UIAlertController(title: "Stream Not Available", message: "Starts On " + videos[indexPath.row].date , preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -173,7 +173,6 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             return
         }
         let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
-        
         let player = AVPlayer(URL: videoURL!)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
