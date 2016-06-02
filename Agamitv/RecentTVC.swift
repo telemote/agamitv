@@ -124,9 +124,23 @@ class RecentTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let url = NSURL(string: videos[indexPath.row].imageUrl)
         let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        cell.thumbnail.image = UIImage(data: data!)
+        let backgroundImage = UIImage(data: data!)
+        let foreGroundImage = UIImage(named: "play.png")
+        let point = CGPoint(x: (backgroundImage?.size.width)!/2-(foreGroundImage?.size.width)!/2,
+                            y: (backgroundImage?.size.height)!/2-(foreGroundImage?.size.height)!/2)
+        cell.thumbnail.image = drawImage(image: foreGroundImage!, inImage: backgroundImage!, atPoint: point)
+         //cell.thumbnail.image = UIImage(data: data!)
         
         return cell
+    }
+    
+     func drawImage(image foreGroundImage:UIImage, inImage backgroundImage:UIImage, atPoint point:CGPoint) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
+        backgroundImage.drawInRect(CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height))
+        foreGroundImage .drawInRect(CGRectMake(point.x, point.y, foreGroundImage.size.width, foreGroundImage.size.height), blendMode: CGBlendMode.Normal, alpha: 0.8)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

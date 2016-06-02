@@ -1,8 +1,16 @@
 //
-//  PopularTableController.swift
+//  LiveTVC.swift
 //  Agamitv
 //
-//  Created by Arif Saikat on 5/27/16.
+//  Created by Arif Saikat on 5/28/16.
+//  Copyright © 2016 Agavi TV. All rights reserved.
+//
+
+//
+//  RecentTVC.swift
+//  Agamitv
+//
+//  Created by Arif Saikat on 5/31/16.
 //  Copyright © 2016 Agavi TV. All rights reserved.
 //
 
@@ -13,7 +21,7 @@ import WebKit
 import AVKit
 import AVFoundation
 
-class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     weak var activityIndicatorView: UIActivityIndicatorView!
@@ -58,6 +66,7 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             if (statusCode == 200) {
                 print("Everyone is fine, file downloaded successfully.")
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.activityIndicatorView.startAnimating()
                     self.videos.removeAll() //clear all old entries
@@ -67,14 +76,14 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                     
-                    if let entries = json["popular"] as? [[String: AnyObject]] {
+                    if let entries = json["live"] as? [[String: AnyObject]] {
                         
                         for entry in entries {
                             
                             self.videos.append(
                                 VideoResource(
-                                    videoUrl: Constants.VIDEO_BASE_PATH + (entry["video"] as? String)!,
-                                    imageUrl: Constants.IMAGE_BASE_PATH + (entry["image"] as? String)!,
+                                    videoUrl: (entry["video"] as? String)!,
+                                    imageUrl: "",
                                     desc: (entry["desc"] as? String)!,
                                     date: (entry["date"] as? String)!
                                 )
@@ -84,7 +93,7 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                             self.tableView.reloadData()
                             self.activityIndicatorView.stopAnimating()
                         })
-
+                        
                     }
                 }catch {
                     print("Error with Json: \(error)")
@@ -99,15 +108,15 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         refreshControl.endRefreshing()
     }
     
-     override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("popularcell") as! PopularCell
-       /* if(videos.count == 0) {
-            return cell
-        }*/
+        let cell = tableView.dequeueReusableCellWithIdentifier("livecell") as! LiveCell
+        /* if(videos.count == 0) {
+         return cell
+         }*/
         
         cell.desc?.numberOfLines = 0
         cell.desc?.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -118,9 +127,17 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 name: "Helvetica-Bold",
                 size: 13.0)!])
         
-        cell.addedOn?.font = cell.addedOn?.font.fontWithSize(11)
-        cell.addedOn.text = "Added on " + videos[indexPath.row].date
+        cell.startsOn?.font = cell.startsOn?.font.fontWithSize(11)
         
+        if(videos[indexPath.row].videoUrl.characters.count == 0) {
+            cell.thumbnail.image = UIImage(named: "off.png")
+             cell.startsOn.text = "Starts on " + videos[indexPath.row].date
+            
+        } else {
+            cell.thumbnail.image = UIImage(named: "on.png")
+           cell.startsOn.text = "Live"
+        }
+        /*
         let url = NSURL(string: videos[indexPath.row].imageUrl)
         let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
         let backgroundImage = UIImage(data: data!)
@@ -128,9 +145,8 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let point = CGPoint(x: (backgroundImage?.size.width)!/2-(foreGroundImage?.size.width)!/2,
                             y: (backgroundImage?.size.height)!/2-(foreGroundImage?.size.height)!/2)
         cell.thumbnail.image = drawImage(image: foreGroundImage!, inImage: backgroundImage!, atPoint: point)
-        
-        // cell.thumbnail.image = UIImage(data: data!)
-
+        //cell.thumbnail.image = UIImage(data: data!)
+        */
         return cell
     }
     
@@ -149,8 +165,15 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
-        tabSwitch = false
+        
+        if(videos[indexPath.row].videoUrl.characters.count == 0) {
+            let alert = UIAlertController(title: "Stream Not Available", message: "Starts On " + videos[indexPath.row].date , preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
         let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
+        
         let player = AVPlayer(URL: videoURL!)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
@@ -159,3 +182,5 @@ class PopularTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
+

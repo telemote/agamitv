@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		803998521CFEB42A00DE2A2B /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 803998511CFEB42A00DE2A2B /* splash.png */; };
+		803998591D0017AE00DE2A2B /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 803998581D0017AE00DE2A2B /* play.png */; };
 		805959D21CEF998700863A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959D11CEF998700863A14 /* AppDelegate.swift */; };
 		805959D71CEF998700863A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805959D51CEF998700863A14 /* Main.storyboard */; };
 		805959DA1CEF998700863A14 /* Agamitv.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 805959D81CEF998700863A14 /* Agamitv.xcdatamodeld */; };
@@ -18,10 +20,13 @@
 		80699FBA1CFE297B005C2BD7 /* RecentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FB91CFE297B005C2BD7 /* RecentCell.swift */; };
 		80699FBC1CFE3D30005C2BD7 /* UpcomingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */; };
 		80699FBE1CFE3DBE005C2BD7 /* UpcomingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */; };
+		807FFF901D0029C40095447B /* LiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807FFF8F1D0029C40095447B /* LiveCell.swift */; };
+		807FFF961D003DDB0095447B /* on.png in Resources */ = {isa = PBXBuildFile; fileRef = 807FFF951D003DDB0095447B /* on.png */; };
+		807FFF981D003DE00095447B /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 807FFF971D003DE00095447B /* off.png */; };
+		8082343E1CFE8A8000A1A6E0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082343D1CFE8A8000A1A6E0 /* TabBarController.swift */; };
 		80906A661CFA9618007F437E /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80906A621CFA9618007F437E /* Assets.bundle */; };
 		80906A671CFA9618007F437E /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80906A641CFA9618007F437E /* YTPlayerView.m */; };
-		80906A6D1CFA9910007F437E /* LiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A6C1CFA9910007F437E /* LiveVC.swift */; };
-		80906A9C1CFCEF8C007F437E /* VimeoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A9B1CFCEF8C007F437E /* VimeoVC.swift */; };
+		80906A6D1CFA9910007F437E /* LiveTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A6C1CFA9910007F437E /* LiveTVC.swift */; };
 		80906A9E1CFD1DE7007F437E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80906A9D1CFD1DE7007F437E /* Util.swift */; };
 		80D4B0FA1CF9096A0077248E /* PopularTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B0F91CF9096A0077248E /* PopularTVC.swift */; };
 		80D4B0FC1CF90DC50077248E /* VideoResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B0FB1CF90DC50077248E /* VideoResource.swift */; };
@@ -46,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		803998511CFEB42A00DE2A2B /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		803998581D0017AE00DE2A2B /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		805959CE1CEF998700863A14 /* AgamiTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgamiTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805959D11CEF998700863A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805959D61CEF998700863A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,12 +70,15 @@
 		80699FB91CFE297B005C2BD7 /* RecentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCell.swift; sourceTree = "<group>"; };
 		80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingCell.swift; sourceTree = "<group>"; };
 		80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingTVC.swift; sourceTree = "<group>"; };
+		807FFF8F1D0029C40095447B /* LiveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveCell.swift; sourceTree = "<group>"; };
+		807FFF951D003DDB0095447B /* on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on.png; sourceTree = "<group>"; };
+		807FFF971D003DE00095447B /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
+		8082343D1CFE8A8000A1A6E0 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80906A621CFA9618007F437E /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
 		80906A631CFA9618007F437E /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		80906A641CFA9618007F437E /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		80906A651CFA9618007F437E /* YouTubeiOSPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeiOSPlayerHelper.h; sourceTree = "<group>"; };
-		80906A6C1CFA9910007F437E /* LiveVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveVC.swift; path = ../LiveVC.swift; sourceTree = "<group>"; };
-		80906A9B1CFCEF8C007F437E /* VimeoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoVC.swift; sourceTree = "<group>"; };
+		80906A6C1CFA9910007F437E /* LiveTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveTVC.swift; path = ../LiveTVC.swift; sourceTree = "<group>"; };
 		80906A9D1CFD1DE7007F437E /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		80D4B0F91CF9096A0077248E /* PopularTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularTVC.swift; sourceTree = "<group>"; };
 		80D4B0FB1CF90DC50077248E /* VideoResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoResource.swift; sourceTree = "<group>"; };
@@ -100,6 +110,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		803998531CFEB42E00DE2A2B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				807FFF951D003DDB0095447B /* on.png */,
+				807FFF971D003DE00095447B /* off.png */,
+				803998581D0017AE00DE2A2B /* play.png */,
+				803998511CFEB42A00DE2A2B /* splash.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		805959C51CEF998700863A14 = {
 			isa = PBXGroup;
 			children = (
@@ -125,15 +146,17 @@
 			isa = PBXGroup;
 			children = (
 				805959D51CEF998700863A14 /* Main.storyboard */,
-				80906A6C1CFA9910007F437E /* LiveVC.swift */,
+				80906A6C1CFA9910007F437E /* LiveTVC.swift */,
 				80699FB71CFE2936005C2BD7 /* RecentTVC.swift */,
 				80D4B0F91CF9096A0077248E /* PopularTVC.swift */,
 				80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */,
 				80699FB91CFE297B005C2BD7 /* RecentCell.swift */,
 				80D4B0FD1CF98A710077248E /* PopularCell.swift */,
+				807FFF8F1D0029C40095447B /* LiveCell.swift */,
 				80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */,
+				803998531CFEB42E00DE2A2B /* images */,
+				8082343D1CFE8A8000A1A6E0 /* TabBarController.swift */,
 				80D4B0FB1CF90DC50077248E /* VideoResource.swift */,
-				80906A9B1CFCEF8C007F437E /* VimeoVC.swift */,
 				80906A9D1CFD1DE7007F437E /* Util.swift */,
 				805959DB1CEF998700863A14 /* Assets.xcassets */,
 				805959D11CEF998700863A14 /* AppDelegate.swift */,
@@ -315,6 +338,10 @@
 				805959DF1CEF998700863A14 /* LaunchScreen.storyboard in Resources */,
 				805959DC1CEF998700863A14 /* Assets.xcassets in Resources */,
 				805959D71CEF998700863A14 /* Main.storyboard in Resources */,
+				803998521CFEB42A00DE2A2B /* splash.png in Resources */,
+				807FFF981D003DE00095447B /* off.png in Resources */,
+				807FFF961D003DDB0095447B /* on.png in Resources */,
+				803998591D0017AE00DE2A2B /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +366,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80906A6D1CFA9910007F437E /* LiveVC.swift in Sources */,
+				80906A6D1CFA9910007F437E /* LiveTVC.swift in Sources */,
 				805959DA1CEF998700863A14 /* Agamitv.xcdatamodeld in Sources */,
-				80906A9C1CFCEF8C007F437E /* VimeoVC.swift in Sources */,
 				80699FBA1CFE297B005C2BD7 /* RecentCell.swift in Sources */,
 				80699FB81CFE2936005C2BD7 /* RecentTVC.swift in Sources */,
 				80D4B0FC1CF90DC50077248E /* VideoResource.swift in Sources */,
@@ -350,6 +376,8 @@
 				80906A9E1CFD1DE7007F437E /* Util.swift in Sources */,
 				805959D21CEF998700863A14 /* AppDelegate.swift in Sources */,
 				80699FBE1CFE3DBE005C2BD7 /* UpcomingTVC.swift in Sources */,
+				8082343E1CFE8A8000A1A6E0 /* TabBarController.swift in Sources */,
+				807FFF901D0029C40095447B /* LiveCell.swift in Sources */,
 				80699FBC1CFE3D30005C2BD7 /* UpcomingCell.swift in Sources */,
 				80906A671CFA9618007F437E /* YTPlayerView.m in Sources */,
 			);
@@ -494,7 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Agamitv/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -510,7 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mohammad Saikat (E4S9TH525M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Agamitv/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
