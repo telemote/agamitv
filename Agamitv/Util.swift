@@ -27,7 +27,7 @@ class Helper {
                             y: (backgroundImage.size.height)/2-(foreGroundImage?.size.height)!/2)
         UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
         backgroundImage.drawInRect(CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height))
-        foreGroundImage! .drawInRect(CGRectMake(point.x, point.y, foreGroundImage!.size.width, foreGroundImage!.size.height), blendMode: CGBlendMode.Normal, alpha: 0.8)
+        foreGroundImage! .drawInRect(CGRectMake(point.x, point.y, foreGroundImage!.size.width, foreGroundImage!.size.height), blendMode: CGBlendMode.Normal, alpha: 0.6)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage

@@ -98,6 +98,9 @@ class UpcomingTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         refreshControl.endRefreshing()
     }
     
+    var tabSwitch:Bool = true
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
