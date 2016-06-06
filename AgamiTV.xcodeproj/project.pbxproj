@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		801718AB1D04ED5F00143F40 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801718AA1D04ED5F00143F40 /* VideoCell.swift */; };
+		801718AD1D04EDAC00143F40 /* VideoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801718AC1D04EDAC00143F40 /* VideoCVC.swift */; };
+		801718AF1D0507E000143F40 /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801718AE1D0507E000143F40 /* RoundedCornersView.swift */; };
+		801718B11D05246900143F40 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801718B01D05246900143F40 /* CollectionViewCell.swift */; };
+		801718B31D0526DF00143F40 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 801718B21D0526DF00143F40 /* circle.png */; };
 		803998521CFEB42A00DE2A2B /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 803998511CFEB42A00DE2A2B /* splash.png */; };
 		803998591D0017AE00DE2A2B /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 803998581D0017AE00DE2A2B /* play.png */; };
 		805959D21CEF998700863A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959D11CEF998700863A14 /* AppDelegate.swift */; };
@@ -52,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		801718AA1D04ED5F00143F40 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		801718AC1D04EDAC00143F40 /* VideoCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoCVC.swift; path = ../VideoCVC.swift; sourceTree = "<group>"; };
+		801718AE1D0507E000143F40 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+		801718B01D05246900143F40 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		801718B21D0526DF00143F40 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		803998511CFEB42A00DE2A2B /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		803998581D0017AE00DE2A2B /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		805959CE1CEF998700863A14 /* AgamiTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgamiTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +123,7 @@
 		803998531CFEB42E00DE2A2B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				801718B21D0526DF00143F40 /* circle.png */,
 				80DCEBD81D00D9DF00EC4852 /* noimage.png */,
 				80DCEBDC1D00E1B200EC4852 /* noimageplay.png */,
 				807FFF951D003DDB0095447B /* on.png */,
@@ -151,9 +162,13 @@
 				80699FB71CFE2936005C2BD7 /* RecentTVC.swift */,
 				80D4B0F91CF9096A0077248E /* PopularTVC.swift */,
 				80699FBD1CFE3DBE005C2BD7 /* UpcomingTVC.swift */,
+				801718AC1D04EDAC00143F40 /* VideoCVC.swift */,
 				80699FB91CFE297B005C2BD7 /* RecentCell.swift */,
+				801718AE1D0507E000143F40 /* RoundedCornersView.swift */,
 				80D4B0FD1CF98A710077248E /* PopularCell.swift */,
 				80699FBB1CFE3D30005C2BD7 /* UpcomingCell.swift */,
+				801718B01D05246900143F40 /* CollectionViewCell.swift */,
+				801718AA1D04ED5F00143F40 /* VideoCell.swift */,
 				807FFF8F1D0029C40095447B /* LiveCell.swift */,
 				80DCEBD61D00D17300EC4852 /* ImageCache.swift */,
 				803998531CFEB42E00DE2A2B /* images */,
@@ -308,6 +323,7 @@
 				80DCEBD91D00D9DF00EC4852 /* noimage.png in Resources */,
 				807FFF981D003DE00095447B /* off.png in Resources */,
 				807FFF961D003DDB0095447B /* on.png in Resources */,
+				801718B31D0526DF00143F40 /* circle.png in Resources */,
 				80DCEBDD1D00E1B200EC4852 /* noimageplay.png in Resources */,
 				803998591D0017AE00DE2A2B /* play.png in Resources */,
 			);
@@ -336,15 +352,19 @@
 			files = (
 				80DCEBD71D00D17300EC4852 /* ImageCache.swift in Sources */,
 				80906A6D1CFA9910007F437E /* LiveTVC.swift in Sources */,
+				801718B11D05246900143F40 /* CollectionViewCell.swift in Sources */,
 				805959DA1CEF998700863A14 /* Agamitv.xcdatamodeld in Sources */,
 				80699FBA1CFE297B005C2BD7 /* RecentCell.swift in Sources */,
 				80699FB81CFE2936005C2BD7 /* RecentTVC.swift in Sources */,
+				801718AB1D04ED5F00143F40 /* VideoCell.swift in Sources */,
+				801718AF1D0507E000143F40 /* RoundedCornersView.swift in Sources */,
 				80D4B0FC1CF90DC50077248E /* VideoResource.swift in Sources */,
 				80D4B0FE1CF98A710077248E /* PopularCell.swift in Sources */,
 				80D4B0FA1CF9096A0077248E /* PopularTVC.swift in Sources */,
 				80906A9E1CFD1DE7007F437E /* Util.swift in Sources */,
 				805959D21CEF998700863A14 /* AppDelegate.swift in Sources */,
 				80699FBE1CFE3DBE005C2BD7 /* UpcomingTVC.swift in Sources */,
+				801718AD1D04EDAC00143F40 /* VideoCVC.swift in Sources */,
 				8082343E1CFE8A8000A1A6E0 /* TabBarController.swift in Sources */,
 				807FFF901D0029C40095447B /* LiveCell.swift in Sources */,
 				80699FBC1CFE3D30005C2BD7 /* UpcomingCell.swift in Sources */,

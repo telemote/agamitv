@@ -68,7 +68,7 @@ class RecentTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                     
-                    if let entries = json["recent"] as? [[String: AnyObject]] {
+                    if let entries = json["event"] as? [[String: AnyObject]] {
                         
                         for entry in entries {
                             

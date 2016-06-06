@@ -42,6 +42,8 @@ class UpcomingTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         getConfigFromServer()
     }
     
+
+    
     func getConfigFromServer(){
         let requestURL: NSURL = NSURL(string: Constants.CONFIG_FILE_PATH)!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
