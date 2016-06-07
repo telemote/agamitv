@@ -1,18 +1,13 @@
 //
-//  LiveTVC.swift
-//  Agamitv
+//  CategoryTVC.swift
+//  AgamiTV
 //
-//  Created by Arif Saikat on 5/28/16.
+//  Created by Arif Saikat on 6/7/16.
 //  Copyright © 2016 Agavi TV. All rights reserved.
 //
 
-//
-//  RecentTVC.swift
-//  Agamitv
-//
-//  Created by Arif Saikat on 5/31/16.
-//  Copyright © 2016 Agavi TV. All rights reserved.
-//
+
+
 
 import Foundation
 
@@ -21,11 +16,11 @@ import WebKit
 import AVKit
 import AVFoundation
 
-class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+   @IBOutlet weak var tableView: UITableView!
     weak var activityIndicatorView: UIActivityIndicatorView!
-    var videos: [VideoResource] = []
+    var categories: [Category] = []
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -33,6 +28,8 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }()
     
     var tabSwitch:Bool = true
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,23 +66,21 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.activityIndicatorView.startAnimating()
-                    self.videos.removeAll() //clear all old entries
+                    self.categories.removeAll() //clear all old entries
                     self.tableView.reloadData()
                 })
                 do{
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                     
-                    if let entries = json["live"] as? [[String: AnyObject]] {
+                    if let entries = json["categories"] as? [[String: AnyObject]] {
                         
                         for entry in entries {
                             
-                            self.videos.append(
-                                VideoResource(
-                                    videoUrl: (entry["video"] as? String)!,
-                                    imageUrl: "",
-                                    desc: (entry["desc"] as? String)!,
-                                    date: (entry["date"] as? String)!
+                            self.categories.append(
+                                Category(
+                                    display: (entry["display"] as? String)!,
+                                    id: (entry["id"] as? String)!
                                 )
                             )
                         }
@@ -112,13 +107,28 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        
+        
+        // Create a new variable to store the instance of PlayerTableViewController
+        let destinationVC = segue.destinationViewController as! VideoCVC
+        destinationVC.categoryid = self.categoryid
+    }
+
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("livecell") as! LiveCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("categorycell")! as UITableViewCell
+        
+        cell.textLabel!.text = categories[indexPath.row].display
+        
+        cell.contentView.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.redColor()
         /* if(videos.count == 0) {
          return cell
          }*/
         
-        cell.desc?.numberOfLines = 0
+       /* cell.desc?.numberOfLines = 0
         cell.desc?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.desc?.font = cell.desc?.font.fontWithSize(16)
         cell.desc.attributedText = NSMutableAttributedString(
@@ -127,59 +137,56 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 name: "Helvetica-Bold",
                 size: 13.0)!])
         
-        cell.startsOn?.font = cell.startsOn?.font.fontWithSize(11)
+        cell.addedOn?.font = cell.addedOn?.font.fontWithSize(11)
+        cell.addedOn.text = "Added on " + videos[indexPath.row].date
         
-        if(videos[indexPath.row].videoUrl.characters.count == 0) {
-            cell.thumbnail.image = UIImage(named: "off.png")
-             cell.startsOn.text = "Starts on " + videos[indexPath.row].date
-            
-        } else {
-            cell.thumbnail.image = UIImage(named: "on.png")
-           cell.startsOn.text = "Live"
-        }
-        /*
+        // Image loading.
         let url = NSURL(string: videos[indexPath.row].imageUrl)
-        let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        let backgroundImage = UIImage(data: data!)
-        let foreGroundImage = UIImage(named: "play.png")
-        let point = CGPoint(x: (backgroundImage?.size.width)!/2-(foreGroundImage?.size.width)!/2,
-                            y: (backgroundImage?.size.height)!/2-(foreGroundImage?.size.height)!/2)
-        cell.thumbnail.image = drawImage(image: foreGroundImage!, inImage: backgroundImage!, atPoint: point)
-        //cell.thumbnail.image = UIImage(data: data!)
+        cell.imageUrl = url // For recycled cells' late image loads.
+        if let image = cell.imageUrl.cachedImage {
+            // Cached: set immediately.
+            cell.thumbnail.image = Helper.drawPlayButtonWaterMark(inImage: image)
+            cell.backGround.alpha=0
+            cell.thumbnail.alpha = 1
+        } else {
+            // Not cached, so load then fade it in.
+            cell.thumbnail.alpha = 0
+            cell.backGround.image = Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "noimageplay.png")!)
+            cell.backGround.alpha=1
+            cell.imageUrl.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+                if cell.imageUrl.absoluteString == self.videos[indexPath.row].imageUrl {
+                    cell.thumbnail.image = Helper.drawPlayButtonWaterMark(inImage: image)
+                    UIView.animateWithDuration(0.3) {
+                        cell.backGround.alpha=0
+                        cell.thumbnail.alpha = 1
+                    }
+                }
+            }
+        }
         */
         return cell
     }
     
-    func drawImage(image foreGroundImage:UIImage, inImage backgroundImage:UIImage, atPoint point:CGPoint) -> UIImage{
-        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
-        backgroundImage.drawInRect(CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height))
-        foreGroundImage .drawInRect(CGRectMake(point.x, point.y, foreGroundImage.size.width, foreGroundImage.size.height), blendMode: CGBlendMode.Normal, alpha: 0.8)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videos.count
-    }
+    var categoryid:String = ""
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
         tabSwitch = false
-        if(videos[indexPath.row].videoUrl.characters.count == 0) {
-            let alert = UIAlertController(title: "Stream Not Available", message: "Starts On " + videos[indexPath.row].date , preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            return
-        }
-        let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
+        self.categoryid = categories[indexPath.row].id
+        performSegueWithIdentifier("category", sender: self)
+
+        
+        /*let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
         let player = AVPlayer(URL: videoURL!)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
         self.presentViewController(playerViewController, animated: true) {
             playerViewController.player!.play()
-        }
+        }*/
     }
 }
-
-

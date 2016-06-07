@@ -19,15 +19,17 @@ import AVFoundation
         @IBOutlet var collectionView: UICollectionView?
         weak var activityIndicatorView: UIActivityIndicatorView!
 
+        var categoryid:String = ""
         
         var videos: [VideoResource] = []
    
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            navigationController?.navigationBar.translucent = false
             // Do any additional setup after loading the view, typically from a nib.
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             layout.itemSize = CGSize(width: 90, height: 120)
             collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
             collectionView!.dataSource = self
@@ -158,7 +160,7 @@ import AVFoundation
                         
                         let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                         
-                        if let entries = json["video"] as? [[String: AnyObject]] {
+                        if let entries = json[self.categoryid] as? [[String: AnyObject]] {
                             
                             for entry in entries {
                                 
