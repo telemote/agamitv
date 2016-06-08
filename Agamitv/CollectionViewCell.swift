@@ -22,17 +22,17 @@ class CollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backGround = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height*3/4))
+        backGround = UIImageView(frame: CGRect(x: 3, y: 3, width: frame.size.width-6, height: frame.size.height*2/3))
         backGround.contentMode = UIViewContentMode.ScaleAspectFit
-        backGround.layer.cornerRadius = 8
+        //backGround.layer.cornerRadius = 8
         contentView.addSubview(backGround)
         
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height*3/4))
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        imageView.layer.cornerRadius = 8
+        imageView = UIImageView(frame: CGRect(x: 3, y: 3, width: frame.size.width-6, height: frame.size.height*2/3))
+        //imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        //imageView.layer.cornerRadius = 8
         contentView.addSubview(imageView)
         
-        let textFrame = CGRect(x: 0, y: frame.size.height*3/4, width: frame.size.width, height: frame.size.height/4)
+        let textFrame = CGRect(x: 3, y: frame.size.height*2/3 + 3 , width: frame.size.width-6, height: frame.size.height/4)
         textLabel = UILabel(frame: textFrame)
         //textLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
         

@@ -18,6 +18,8 @@ struct Constants {
     static let IMAGE_BASE_PATH = SERVER + "/ios/image/"
     static let VIDEO_BASE_PATH = SERVER + "/ios/video/"
     static let CONFIG_FILE_PATH = SERVER + "/ios/config/ios.json"
+    static let GREEN = UIColor(red:14, green: 86, blue: 43)
+    static let RED = UIColor(red:227, green: 0, blue: 28)
 }
 
 class Helper {
@@ -33,4 +35,17 @@ class Helper {
         return newImage
     }
 }
+
+
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+    }
+}
+
 

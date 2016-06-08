@@ -39,6 +39,10 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         tableView.backgroundView = activityIndicatorView
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.activityIndicatorView = activityIndicatorView
+        
+        self.tableView.backgroundColor = Constants.GREEN
+        self.tableView.backgroundView!.backgroundColor = Constants.GREEN
+        self.view.backgroundColor = Constants.GREEN
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -115,15 +119,52 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let destinationVC = segue.destinationViewController as! VideoCVC
         destinationVC.categoryid = self.categoryid
     }
+    
+
+    
+    // if tableView is set in attribute inspector with selection to multiple Selection it should work.
+    
+    // Just set it back in deselect
+    
+
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categorycell")! as UITableViewCell
         
-        cell.textLabel!.text = categories[indexPath.row].display
+        // note that indexPath.section is used rather than indexPath.row
+        //cell.textLabel?.text = self.categories[indexPath.section].display
         
-        cell.contentView.backgroundColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor.redColor()
+        cell.textLabel!.textAlignment = NSTextAlignment.Center;
+        
+        
+        var myMutableString = NSMutableAttributedString()
+        var myString:NSString = categories[indexPath.section].display
+        
+        myMutableString = NSMutableAttributedString(string:myString.uppercaseString as String, attributes: [NSFontAttributeName:UIFont(name: "AvenirNext-Bold", size: 18.0)!])
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(),
+                                     range: NSRange(location:0,length:myString.length))
+       
+        cell.textLabel!.attributedText = myMutableString
+        
+       /* cell.textLabel!.attributedText = NSMutableAttributedString(
+            string: categories[indexPath.section].display,
+            attributes: [NSFontAttributeName:UIFont(
+                name: "Helvetica-Bold",
+                color : [UIColor redColor],
+                size: 16.0)!])*/
+        
+        // add border and color
+        cell.backgroundColor = Constants.RED
+        cell.layer.borderColor = Constants.RED.CGColor
+        cell.layer.borderWidth = 3
+        cell.layer.cornerRadius = 8
+        cell.clipsToBounds = true
+        
+       // cell.textLabel!.text = categories[indexPath.row].display
+        
+      //  cell.contentView.backgroundColor = UIColor.whiteColor()
+       // cell.backgroundColor = UIColor.redColor()
         /* if(videos.count == 0) {
          return cell
          }*/
@@ -168,25 +209,70 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // have one section for every array item
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return categories.count
+    }
+    
+    // There is just one row in every section
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    // Set the spacing between sections
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    // Make the background color show through
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clearColor()
+        return headerView
+    }
+
+    
+    
+   /* func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }*/
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        var cellToDeSelect:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+       // cellToDeSelect.contentView.backgroundColor = UIColor.lightGrayColor()
+        cellToDeSelect.layer.borderColor = Constants.RED.CGColor
     }
     
     var categoryid:String = ""
     
+    // method to run when table view cell is tapped
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // note that indexPath.section is used rather than indexPath.row
+        print("You tapped cell number \(indexPath.section).")
+        
+        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        //selectedCell.contentView.backgroundColor = self.view.tintColor
+        //selectedCell.contentView.backgroundColor = UIColor(red:14, green: 86, blue: 43)
+        //selectedCell.textLabel?.attributedText.
+        selectedCell.layer.borderColor = UIColor.whiteColor().CGColor
+        tabSwitch = false
+        self.categoryid = categories[indexPath.section].id
+        performSegueWithIdentifier("category", sender: self)
+    }
+    
+    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
         tabSwitch = false
         self.categoryid = categories[indexPath.row].id
         performSegueWithIdentifier("category", sender: self)
 
         
-        /*let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
+        let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
         let player = AVPlayer(URL: videoURL!)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
         self.presentViewController(playerViewController, animated: true) {
             playerViewController.player!.play()
-        }*/
-    }
+        }
+    }*/
 }

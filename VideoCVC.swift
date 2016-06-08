@@ -29,13 +29,13 @@ import AVFoundation
             navigationController?.navigationBar.translucent = false
             // Do any additional setup after loading the view, typically from a nib.
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-            layout.itemSize = CGSize(width: 90, height: 120)
+            layout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+            layout.itemSize = CGSize(width: 114, height: 114)
             collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
             collectionView!.dataSource = self
             collectionView!.delegate = self
             collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-            collectionView!.backgroundColor = UIColor.whiteColor()
+            collectionView!.backgroundColor = Constants.GREEN
             self.view.addSubview(collectionView!)
             getConfigFromServer()
             
@@ -46,10 +46,11 @@ import AVFoundation
             collectionView!.alwaysBounceVertical = true
             
             let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-            activityIndicatorView.color = UIColor.blueColor()
+            activityIndicatorView.color = Constants.RED
             collectionView!.backgroundView = activityIndicatorView
             
             self.activityIndicatorView = activityIndicatorView
+            //self.view.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in
 
             
            // tabBar.items?[0].title = "Number 0"
@@ -64,8 +65,9 @@ import AVFoundation
             //cell.layer.borderColor = UIColor.grayColor().CGColor
             //cell.layer.borderWidth = 0.3
             
-            //cell.layer.cornerRadius = 8
-            cell.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in willDisplayCell
+            cell.layer.cornerRadius = 6
+            //cell.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in willDisplayCell
+            cell.backgroundColor = UIColor.redColor()
            // cell.textLabel.backgroundColor = UIColor.redColor() //must do here in willDisplayCell
             //cell.textLabel.textColor = UIColor.redColor(); //can do here OR in cellForRowAtIndexPath
 
@@ -96,11 +98,19 @@ import AVFoundation
             //cell.backgroundColor = UIColor.blackColor()
             //cell.textLabel.text = videos[indexPath.row].desc
             
+          /*  var myMutableString = NSMutableAttributedString()
+            var myString:NSString = videos[indexPath.row].desc
+            
+            myMutableString = NSMutableAttributedString(string:myString.uppercaseString as String, attributes: [NSFontAttributeName:UIFont(name: "AvenirNext", size: 6.0)!])
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(),
+                                         range: NSRange(location:0,length:myString.length))
+            
+            cell.textLabel.attributedText = myMutableString */
+            
             cell.textLabel.attributedText = NSMutableAttributedString(
                 string: videos[indexPath.row].desc,
-                attributes: [NSFontAttributeName:UIFont(
-                    name: "Helvetica",
-                    size: 6.0)!])
+                attributes: [NSFontAttributeName:UIFont( name: "AvenirNext-Bold", size: 8.0)!,
+                    NSForegroundColorAttributeName: UIColor.whiteColor()])
             
            
             

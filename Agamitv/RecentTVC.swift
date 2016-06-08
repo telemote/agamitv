@@ -30,10 +30,16 @@ class RecentTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         self.tableView.addSubview(self.refreshControl)
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicatorView.color = UIColor.blueColor()
+        activityIndicatorView.color = Constants.RED
         tableView.backgroundView = activityIndicatorView
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        //tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorColor = Constants.GREEN
+        //tableView.separatorInset
         self.activityIndicatorView = activityIndicatorView
+        
+        self.tableView.backgroundColor = Constants.GREEN
+        self.tableView.backgroundView!.backgroundColor = Constants.GREEN
+        self.view.backgroundColor = Constants.GREEN
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -104,6 +110,15 @@ class RecentTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.borderWidth = 3
+        
+        cell.layer.cornerRadius = 6
+        //cell.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in willDisplayCell
+        cell.backgroundColor = UIColor.redColor()
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("recentcell") as! RecentCell
         /* if(videos.count == 0) {
@@ -115,9 +130,8 @@ class RecentTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.desc?.font = cell.desc?.font.fontWithSize(16)
         cell.desc.attributedText = NSMutableAttributedString(
             string: videos[indexPath.row].desc,
-            attributes: [NSFontAttributeName:UIFont(
-                name: "Helvetica-Bold",
-                size: 13.0)!])
+            attributes: [NSFontAttributeName:UIFont( name: "Helvetica-Bold", size: 13.0)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         cell.addedOn?.font = cell.addedOn?.font.fontWithSize(11)
         cell.addedOn.text = "Added on " + videos[indexPath.row].date

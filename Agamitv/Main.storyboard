@@ -113,14 +113,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n8o-pP-Ujq">
-                                <rect key="frame" x="0.0" y="28" width="600" height="515"/>
+                                <rect key="frame" x="20" y="28" width="560" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recentcell" rowHeight="109" id="Aad-2P-wZa" customClass="RecentCell" customModule="AgamiTV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="109"/>
+                                        <rect key="frame" x="0.0" y="28" width="560" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aad-2P-wZa" id="nSW-IZ-Mqs">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="108.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="108.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-JR-T65">
@@ -159,7 +159,7 @@
                                                 <constraint firstItem="t3x-Lx-ac3" firstAttribute="top" secondItem="Aya-rL-fVh" secondAttribute="bottom" constant="4" id="i2Q-F1-nbc"/>
                                                 <constraint firstItem="t3x-Lx-ac3" firstAttribute="leading" secondItem="vKt-JR-T65" secondAttribute="trailing" constant="8" id="iXX-V2-woa"/>
                                                 <constraint firstItem="Aya-rL-fVh" firstAttribute="top" secondItem="nSW-IZ-Mqs" secondAttribute="topMargin" constant="-8" id="kYp-UW-OH8"/>
-                                                <constraint firstItem="Aya-rL-fVh" firstAttribute="trailing" secondItem="nSW-IZ-Mqs" secondAttribute="trailingMargin" constant="5" id="wL5-7M-g8b"/>
+                                                <constraint firstItem="Aya-rL-fVh" firstAttribute="trailing" secondItem="nSW-IZ-Mqs" secondAttribute="trailingMargin" constant="45" id="wL5-7M-g8b"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -178,10 +178,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="n8o-pP-Ujq" firstAttribute="leading" secondItem="nah-Sj-Dd6" secondAttribute="leadingMargin" constant="-20" id="46R-HQ-YbL"/>
+                            <constraint firstItem="n8o-pP-Ujq" firstAttribute="leading" secondItem="nah-Sj-Dd6" secondAttribute="leadingMargin" id="46R-HQ-YbL"/>
                             <constraint firstItem="c2k-K9-Qgk" firstAttribute="top" secondItem="n8o-pP-Ujq" secondAttribute="bottom" constant="8" id="Q5O-TI-Wjn"/>
                             <constraint firstItem="n8o-pP-Ujq" firstAttribute="top" secondItem="6TJ-Hi-1nl" secondAttribute="bottom" constant="8" id="eia-bU-TCf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="n8o-pP-Ujq" secondAttribute="trailing" constant="-20" id="mkh-Cg-mcj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n8o-pP-Ujq" secondAttribute="trailing" id="mkh-Cg-mcj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Recent" image="Live" id="nx1-ln-oaj"/>
@@ -208,6 +208,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1RQ-l4-tOX">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8P0-gi-OYQ">
                                     <size key="itemSize" width="110" height="106"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -265,14 +266,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zuh-N3-QHH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="20" y="0.0" width="560" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categorycell" id="lYj-4s-kiF">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categorycell" id="lYj-4s-kiF">
+                                        <rect key="frame" x="0.0" y="92" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lYj-4s-kiF" id="7ax-ZI-kPh">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -283,12 +284,11 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Zuh-N3-QHH" secondAttribute="trailing" constant="-20" id="8Tp-vO-9ZQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zuh-N3-QHH" secondAttribute="trailing" id="8Tp-vO-9ZQ"/>
                             <constraint firstItem="A6f-4y-75F" firstAttribute="top" secondItem="Zuh-N3-QHH" secondAttribute="bottom" id="aKD-Dw-mdq"/>
                             <constraint firstItem="Zuh-N3-QHH" firstAttribute="top" secondItem="QM2-vH-VpP" secondAttribute="topMargin" id="p57-lo-yTJ"/>
-                            <constraint firstItem="Zuh-N3-QHH" firstAttribute="leading" secondItem="QM2-vH-VpP" secondAttribute="leadingMargin" constant="-20" id="wb1-Se-7lb"/>
+                            <constraint firstItem="Zuh-N3-QHH" firstAttribute="leading" secondItem="QM2-vH-VpP" secondAttribute="leadingMargin" id="wb1-Se-7lb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="22E-42-VK9"/>
