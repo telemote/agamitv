@@ -20,7 +20,8 @@ import AVFoundation
         weak var activityIndicatorView: UIActivityIndicatorView!
 
         var categoryid:String = ""
-        
+        var categoryname:String = ""
+
         var videos: [VideoResource] = []
    
         
@@ -34,7 +35,7 @@ import AVFoundation
             collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
             collectionView!.dataSource = self
             collectionView!.delegate = self
-            collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+            collectionView!.registerClass(VideoCell.self, forCellWithReuseIdentifier: "videocell")
             collectionView!.backgroundColor = Constants.GREEN
             self.view.addSubview(collectionView!)
             getConfigFromServer()
@@ -54,6 +55,7 @@ import AVFoundation
 
             
            // tabBar.items?[0].title = "Number 0"
+            self.navigationItem.title = categoryname.uppercaseString
         }
         
         func refresh(refreshControl: UIRefreshControl) {
@@ -94,7 +96,7 @@ import AVFoundation
         }
         
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! CollectionViewCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videocell", forIndexPath: indexPath) as! VideoCell
             //cell.backgroundColor = UIColor.blackColor()
             //cell.textLabel.text = videos[indexPath.row].desc
             

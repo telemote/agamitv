@@ -1,5 +1,5 @@
 //
-//  UpcomingCell.swift
+//  RecentCell.swift
 //  Agamitv
 //
 //  Created by Arif Saikat on 5/31/16.
@@ -8,14 +8,13 @@
 
 import UIKit
 
-class UpcomingCell: UITableViewCell {
+class LiveCell: UITableViewCell {
     
     @IBOutlet weak var backGround: UIImageView!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var desc: UILabel!
-    @IBOutlet weak var eventOn: UILabel!
+    @IBOutlet weak var addedOn: UILabel!
     var imageUrl: NSURL!
-
     
     override func awakeFromNib() {
         super.awakeFromNib()

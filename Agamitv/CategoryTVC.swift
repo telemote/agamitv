@@ -43,6 +43,15 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.tableView.backgroundColor = Constants.GREEN
         self.tableView.backgroundView!.backgroundColor = Constants.GREEN
         self.view.backgroundColor = Constants.GREEN
+        
+        self.navigationController!.navigationBar.translucent = false
+        self.navigationController!.navigationBar.barTintColor = Constants.RED
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+       // self.navigationController!.navigationBar.frame = CGRectMake(0, 0, 320, 64)
+        //self.title = "AgamiTV"
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationItem.title = "AgamiTV"
+        //self.navigationItem.backBarButtonItem?.title = "Categories"
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -118,6 +127,7 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         // Create a new variable to store the instance of PlayerTableViewController
         let destinationVC = segue.destinationViewController as! VideoCVC
         destinationVC.categoryid = self.categoryid
+        destinationVC.categoryname = self.categoryname
     }
     
 
@@ -244,6 +254,7 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     
     var categoryid:String = ""
+    var categoryname:String = ""
     
     // method to run when table view cell is tapped
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -257,6 +268,7 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         selectedCell.layer.borderColor = UIColor.whiteColor().CGColor
         tabSwitch = false
         self.categoryid = categories[indexPath.section].id
+        self.categoryname = categories[indexPath.section].display
         performSegueWithIdentifier("category", sender: self)
     }
     
