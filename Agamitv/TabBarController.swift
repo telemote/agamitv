@@ -32,11 +32,16 @@ class TabBarController: UITabBarController {
     
     func getConfigFromServer(){
         let requestURL: NSURL = NSURL(string: Constants.CONFIG_FILE_PATH)!
-        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL,
+                cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
+                timeoutInterval: 15.0)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) -> Void in
+            
+            if(error != nil) {
+                return;
+            }
             
             let httpResponse = response as! NSHTTPURLResponse
             let statusCode = httpResponse.statusCode
@@ -63,14 +68,12 @@ class TabBarController: UITabBarController {
                                 self.tabBar.items?[0].title = self.tabs[0]
                              self.tabBar.items?[1].title = self.tabs[1]
                              self.tabBar.items?[2].title = self.tabs[2]
-                                
+                            self.tabBar.items?[3].title = self.tabs[3]
                             
                         })
                         
                     }
-                }catch {
-                    print("Error with Json: \(error)")
-                }
+                }catch {}
             }
         }
         task.resume()

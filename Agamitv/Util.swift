@@ -14,10 +14,7 @@ import AVKit
 import AVFoundation
 
 struct Constants {
-    static let SERVER = "http://ww2.agamitv.com"
-    static let IMAGE_BASE_PATH = SERVER + "/ios/image/"
-    static let VIDEO_BASE_PATH = SERVER + "/ios/video/"
-    static let CONFIG_FILE_PATH = SERVER + "/ios/config/ios.json"
+    static let CONFIG_FILE_PATH = "http://ww2.agamitv.com/ios/config/ios.json"
     static let GREEN = UIColor(red:14, green: 86, blue: 43)
     static let RED = UIColor(red:227, green: 0, blue: 28)
 }

@@ -34,6 +34,8 @@
 		80DCEBD91D00D9DF00EC4852 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 80DCEBD81D00D9DF00EC4852 /* noimage.png */; };
 		80DCEBDD1D00E1B200EC4852 /* noimageplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 80DCEBDC1D00E1B200EC4852 /* noimageplay.png */; };
 		80E060181D077BE000D4554F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E060171D077BE000D4554F /* Main.storyboard */; };
+		80E4DDC91D0A1FF5002ECB09 /* noimage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E4DDC81D0A1FF5002ECB09 /* noimage1.png */; };
+		80E4DDCB1D0A1FFB002ECB09 /* noimage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E4DDCA1D0A1FFB002ECB09 /* noimage2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		80DCEBD81D00D9DF00EC4852 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		80DCEBDC1D00E1B200EC4852 /* noimageplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimageplay.png; sourceTree = "<group>"; };
 		80E060171D077BE000D4554F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		80E4DDC81D0A1FF5002ECB09 /* noimage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage1.png; sourceTree = "<group>"; };
+		80E4DDCA1D0A1FFB002ECB09 /* noimage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				801718B21D0526DF00143F40 /* circle.png */,
 				80DCEBD81D00D9DF00EC4852 /* noimage.png */,
 				80DCEBDC1D00E1B200EC4852 /* noimageplay.png */,
+				80E4DDC81D0A1FF5002ECB09 /* noimage1.png */,
+				80E4DDCA1D0A1FFB002ECB09 /* noimage2.png */,
 				807FFF951D003DDB0095447B /* on.png */,
 				807FFF971D003DE00095447B /* off.png */,
 				801693471D08ADB1000DB6B5 /* splash.png */,
@@ -316,6 +322,8 @@
 				807FFF981D003DE00095447B /* off.png in Resources */,
 				807FFF961D003DDB0095447B /* on.png in Resources */,
 				801718B31D0526DF00143F40 /* circle.png in Resources */,
+				80E4DDCB1D0A1FFB002ECB09 /* noimage2.png in Resources */,
+				80E4DDC91D0A1FF5002ECB09 /* noimage1.png in Resources */,
 				80DCEBDD1D00E1B200EC4852 /* noimageplay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,41 +21,59 @@ import AVFoundation
 
         var categoryid:String = ""
         var categoryname:String = ""
+        var smallbox:CGFloat = 150.0
+        var mediumbox:CGFloat = 168.0
+        var largebox:CGFloat = 128.0
+        var fontsize:CGFloat = 7.0
+        var margin:CGFloat = 4.0
 
         var videos: [VideoResource] = []
    
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            navigationController?.navigationBar.translucent = false
-            // Do any additional setup after loading the view, typically from a nib.
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
-            layout.itemSize = CGSize(width: 114, height: 114)
+            
+            // for iphone 6 plus and 6s plus
+            if(self.view.frame.width >= (largebox+margin)*3) {
+                layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+                layout.itemSize = CGSize(width: largebox, height: largebox)
+                fontsize = 7.0
+                }
+            //for iphone 6 and 6 plus
+            else if(self.view.frame.width >= (mediumbox+margin*3)*2){
+                layout.sectionInset = UIEdgeInsets(top: margin*3, left: margin*3, bottom: margin*3, right: margin*3)
+                layout.itemSize = CGSize(width: mediumbox, height: mediumbox)
+                fontsize = 9.0
+            }
+            //for iphone 4s, 5 and 5s
+            else {
+                layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+                layout.itemSize = CGSize(width: smallbox, height: smallbox)
+                fontsize = 8.0
+            }
+            
             collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
             collectionView!.dataSource = self
             collectionView!.delegate = self
             collectionView!.registerClass(VideoCell.self, forCellWithReuseIdentifier: "videocell")
             collectionView!.backgroundColor = Constants.GREEN
             self.view.addSubview(collectionView!)
-            getConfigFromServer()
             
             let refreshControl = UIRefreshControl()
-            //refreshControl.tintColor = UIColor.blueColor()
+            refreshControl.tintColor = UIColor.whiteColor()
             refreshControl.addTarget(self, action: #selector(self.refresh), forControlEvents: .ValueChanged)
             collectionView!.addSubview(refreshControl)
             collectionView!.alwaysBounceVertical = true
             
             let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-            activityIndicatorView.color = Constants.RED
+            activityIndicatorView.color = UIColor.whiteColor()
             collectionView!.backgroundView = activityIndicatorView
             
             self.activityIndicatorView = activityIndicatorView
-            //self.view.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in
-
-            
-           // tabBar.items?[0].title = "Number 0"
             self.navigationItem.title = categoryname.uppercaseString
+            
+            getConfigFromServer()
         }
         
         func refresh(refreshControl: UIRefreshControl) {
@@ -64,15 +82,8 @@ import AVFoundation
         }
         
         func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-            //cell.layer.borderColor = UIColor.grayColor().CGColor
-            //cell.layer.borderWidth = 0.3
-            
             cell.layer.cornerRadius = 6
-            //cell.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in willDisplayCell
-            cell.backgroundColor = UIColor.redColor()
-           // cell.textLabel.backgroundColor = UIColor.redColor() //must do here in willDisplayCell
-            //cell.textLabel.textColor = UIColor.redColor(); //can do here OR in cellForRowAtIndexPath
-
+            cell.backgroundColor = Constants.RED
         }
         
         func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -85,8 +96,6 @@ import AVFoundation
             }
         }
         
- 
-        
         func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
             return 1
         }
@@ -97,24 +106,10 @@ import AVFoundation
         
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videocell", forIndexPath: indexPath) as! VideoCell
-            //cell.backgroundColor = UIColor.blackColor()
-            //cell.textLabel.text = videos[indexPath.row].desc
-            
-          /*  var myMutableString = NSMutableAttributedString()
-            var myString:NSString = videos[indexPath.row].desc
-            
-            myMutableString = NSMutableAttributedString(string:myString.uppercaseString as String, attributes: [NSFontAttributeName:UIFont(name: "AvenirNext", size: 6.0)!])
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(),
-                                         range: NSRange(location:0,length:myString.length))
-            
-            cell.textLabel.attributedText = myMutableString */
-            
             cell.textLabel.attributedText = NSMutableAttributedString(
                 string: videos[indexPath.row].desc,
-                attributes: [NSFontAttributeName:UIFont( name: "AvenirNext-Bold", size: 8.0)!,
+                attributes: [NSFontAttributeName:UIFont( name: "AvenirNext-Bold", size: fontsize)!,
                     NSForegroundColorAttributeName: UIColor.whiteColor()])
-            
-           
             
             // Image loading.
             let url = NSURL(string: videos[indexPath.row].imageUrl)
@@ -127,7 +122,7 @@ import AVFoundation
             } else {
                 // Not cached, so load then fade it in.
                 cell.imageView.alpha = 0
-                cell.backGround.image = Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "noimageplay.png")!)
+                cell.backGround.image = Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "noimage2.png")!)
                 cell.backGround.alpha=1
                 cell.imageUrl.fetchImage { image in
                     // Check the cell hasn't recycled while loading.
@@ -141,7 +136,6 @@ import AVFoundation
                 }
             }
             
-           // cell.imageView.image = Helper.drawPlayButtonWaterMark(inImage: image)
             return cell
         }
         
@@ -151,35 +145,44 @@ import AVFoundation
         }
         
         func getConfigFromServer(){
+            self.activityIndicatorView.startAnimating()
             let requestURL: NSURL = NSURL(string: Constants.CONFIG_FILE_PATH)!
-            let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-            NSURLCache.sharedURLCache().removeAllCachedResponses()
+            let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL,
+                cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
+                timeoutInterval: 15.0)
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(urlRequest) {
                 (data, response, error) -> Void in
-                
+
+                if(error != nil) {
+                    self.activityIndicatorView.stopAnimating()
+                    let alert = UIAlertController(title: "Network Error", message: "Please make sure you are connected to the internet.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    return;
+                }
+
                 let httpResponse = response as! NSHTTPURLResponse
                 let statusCode = httpResponse.statusCode
                 
                 if (statusCode == 200) {
-                    print("Everyone is fine, file downloaded successfully.")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.activityIndicatorView.startAnimating()
-                        self.videos.removeAll() //clear all old entries
-                        self.collectionView!.reloadData()
-                    })
+                    self.videos.removeAll() //clear all old entries
                     do{
-                        
                         let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                         
-                        if let entries = json[self.categoryid] as? [[String: AnyObject]] {
-                            
+                        // load paths
+                        var paths: [String] = []
+                        if let entries = json["paths"] as? [String] {
                             for entry in entries {
-                                
+                                paths.append(entry)
+                            }
+                        }
+                        if let entries = json[self.categoryid] as? [[String: AnyObject]] {
+                            for entry in entries {
                                 self.videos.append(
                                     VideoResource(
-                                        videoUrl: Constants.VIDEO_BASE_PATH + (entry["video"] as? String)!,
-                                        imageUrl: Constants.IMAGE_BASE_PATH + (entry["image"] as? String)!,
+                                        videoUrl: paths[1] + "/" + (entry["video"] as? String)!,
+                                        imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
                                         desc: (entry["desc"] as? String)!,
                                         date: (entry["date"] as? String)!
                                     )
@@ -189,16 +192,10 @@ import AVFoundation
                                 self.collectionView!.reloadData()
                                 self.activityIndicatorView.stopAnimating()
                             })
-                            
                         }
-                    }catch {
-                        print("Error with Json: \(error)")
-                    }
+                    }catch {}
                 }
             }
             task.resume()
         }
-
-        
-        
 }

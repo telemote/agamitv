@@ -22,7 +22,8 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var videos: [VideoResource] = []
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(EventTVC.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.tintColor = UIColor.whiteColor()
         return refreshControl
     }()
     
@@ -30,7 +31,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         self.tableView.addSubview(self.refreshControl)
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicatorView.color = UIColor.blueColor()
+        activityIndicatorView.color = UIColor.whiteColor()
         tableView.backgroundView = activityIndicatorView
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.activityIndicatorView = activityIndicatorView
@@ -40,20 +41,16 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.view.backgroundColor = Constants.GREEN
         
         // add app wide header
-        var v = UIView()
-        v.backgroundColor = Constants.RED
-        v.frame = CGRectMake(0, 0, self.view.bounds.width, 64)
-        
-        let textFrame = CGRect(x: self.view.bounds.width/2-49, y: 28 , width: 100, height: 30)
-        var textLabel = UILabel(frame: textFrame)
-        //textLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+        let headerView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, 64))
+        headerView.backgroundColor = Constants.RED
+        let textLabel = UILabel(frame: CGRect(x: self.view.bounds.width/2-49, y: 28 , width: 100, height: 30))
         textLabel.textAlignment = .Center
         textLabel.font = UIFont.boldSystemFontOfSize(17.0)
         textLabel.attributedText = NSMutableAttributedString(
             string: "AgamiTV",
             attributes:[ NSForegroundColorAttributeName: UIColor.whiteColor()])
-        v.addSubview(textLabel)
-        self.view.addSubview(v)
+        headerView.addSubview(textLabel)
+        self.view.addSubview(headerView)
         
     }
     
@@ -62,40 +59,46 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         getConfigFromServer()
     }
     
-
-    
     func getConfigFromServer(){
+        self.activityIndicatorView.startAnimating()
         let requestURL: NSURL = NSURL(string: Constants.CONFIG_FILE_PATH)!
-        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL,
+            cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
+            timeoutInterval: 15.0)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) -> Void in
             
+            if(error != nil) {
+                self.activityIndicatorView.stopAnimating()
+                let alert = UIAlertController(title: "Network Error", message: "Please make sure you are connected to the internet.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                return;
+            }
+
             let httpResponse = response as! NSHTTPURLResponse
             let statusCode = httpResponse.statusCode
             
             if (statusCode == 200) {
-                print("Everyone is fine, file downloaded successfully.")
-                
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.activityIndicatorView.startAnimating()
-                    self.videos.removeAll() //clear all old entries
-                    self.tableView.reloadData()
-                })
+                self.videos.removeAll() //clear all old entries
                 do{
-                    
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                     
-                    if let entries = json["upcoming"] as? [[String: AnyObject]] {
-                        
+                    // load paths
+                    var paths: [String] = []
+                    if let entries = json["paths"] as? [String] {
                         for entry in entries {
-                            
+                            paths.append(entry)
+                        }
+                    }
+                    
+                    if let entries = json["events"] as? [[String: AnyObject]] {
+                        for entry in entries {
                             self.videos.append(
                                 VideoResource(
                                     videoUrl: "",
-                                    imageUrl: Constants.IMAGE_BASE_PATH + (entry["image"] as? String)!,
+                                    imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
                                     desc: (entry["desc"] as? String)!,
                                     date: (entry["date"] as? String)!
                                 )
@@ -107,9 +110,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         })
                         
                     }
-                }catch {
-                    print("Error with Json: \(error)")
-                }
+                }catch {}
             }
         }
         task.resume()
@@ -129,29 +130,13 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("eventcell") as! EventCell
-        /* if(videos.count == 0) {
-        return cell
-        }*/
-        
         cell.desc?.numberOfLines = 0
         cell.desc?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.desc?.font = cell.desc?.font.fontWithSize(16)
-        /*cell.desc.attributedText = NSMutableAttributedString(
-            string: videos[indexPath.row].desc,
-            attributes: [NSFontAttributeName:UIFont(
-                name: "Helvetica",
-                size: 11.0)!])*/
-        
         cell.desc.attributedText = NSMutableAttributedString(
             string: videos[indexPath.section].desc,
             attributes: [NSFontAttributeName:UIFont( name: "Helvetica", size: 11.0)!,
                 NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-       /* cell.eventOn.attributedText = NSMutableAttributedString(
-            string: videos[indexPath.row].date,
-            attributes: [NSFontAttributeName:UIFont(
-                name: "Helvetica-bold",
-                size: 13.0)!])*/
         
         cell.eventOn.attributedText = NSMutableAttributedString(
             string: videos[indexPath.section].date,
@@ -189,11 +174,8 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         cell.layer.borderWidth = 3
-        
         cell.layer.cornerRadius = 6
-        //cell.backgroundColor = UIColor(hue: 0.5583, saturation: 0.17, brightness: 0.88, alpha: 0.5) //must do here in willDisplayCell
         cell.backgroundColor = UIColor.redColor()
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -209,13 +191,9 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var v = UIView()
+        let v = UIView()
         v.backgroundColor = Constants.GREEN
         return v
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //CODE TO BE RUN ON CELL TOUCH
     }
 }
 
