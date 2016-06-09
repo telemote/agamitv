@@ -154,6 +154,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         } else {
             // Not cached, so load then fade it in.
             cell.thumbnail.alpha = 0
+            cell.backGround.image = UIImage(named: "noimage1.png")!
             cell.backGround.alpha=1
             cell.imageUrl.fetchImage { image in
                 // Check the cell hasn't recycled while loading.

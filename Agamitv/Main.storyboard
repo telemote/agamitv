@@ -42,7 +42,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-k3-JXh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-k3-JXh">
                                                     <rect key="frame" x="13" y="13" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="0DB-SJ-QbU"/>
@@ -371,7 +371,6 @@
         <image name="About" width="50" height="50"/>
         <image name="Live" width="50" height="50"/>
         <image name="Upcoming" width="60" height="60"/>
-        <image name="noimage.png" width="140" height="140"/>
         <image name="video" width="50" height="50"/>
     </resources>
 </document>
