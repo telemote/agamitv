@@ -28,50 +28,75 @@ import AVFoundation
         var margin:CGFloat = 4.0
 
         var videos: [VideoResource] = []
+        
+        override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews();
+        let top = self.topLayoutGuide.length;
+        let bottom = self.bottomLayoutGuide.length;
+        let newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
+        self.collectionView!.contentInset = newInsets;
+        
+        }
    
         
         override func viewDidLoad() {
             super.viewDidLoad()
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
             
+            var boxsize:CGFloat = 0.0
+            var marginsize:CGFloat = 0.0
+
+            
             // for iphone 6 plus and 6s plus
             if(self.view.frame.width >= (largebox+margin)*3) {
-                layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-                layout.itemSize = CGSize(width: largebox, height: largebox)
+                boxsize = largebox
+                marginsize = margin
                 fontsize = 7.0
                 }
             //for iphone 6 and 6 plus
             else if(self.view.frame.width >= (mediumbox+margin*3)*2){
-                layout.sectionInset = UIEdgeInsets(top: margin*3, left: margin*3, bottom: margin*3, right: margin*3)
-                layout.itemSize = CGSize(width: mediumbox, height: mediumbox)
+                boxsize = mediumbox
+                marginsize = margin*3
                 fontsize = 9.0
             }
             //for iphone 4s, 5 and 5s
             else {
-                layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-                layout.itemSize = CGSize(width: smallbox, height: smallbox)
+                boxsize = smallbox
+                marginsize = margin
                 fontsize = 8.0
             }
+            layout.sectionInset = UIEdgeInsets(top: marginsize, left: marginsize, bottom: marginsize, right: marginsize)
+            layout.itemSize = CGSize(width: boxsize, height: boxsize)
             
-            collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+            let frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, (self.view.frame.size.height - self.tabBarController!.tabBar.frame.size.height-boxsize*3/7));
+
+            collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+           // collectionView = UICollectionView(frame: CGRect(x: 0, y: 0 , width: self.view.frame.width, height: self.view.frame.height/*-self.tabBarController!.tabBar.frame.size.height*/), collectionViewLayout: layout)
+            
             collectionView!.dataSource = self
             collectionView!.delegate = self
             collectionView!.registerClass(VideoCell.self, forCellWithReuseIdentifier: "videocell")
-            collectionView!.backgroundColor = Constants.GREEN
+            collectionView!.backgroundColor = Constants.WHITE
+            collectionView?.alwaysBounceVertical = true
+            //collectionView?.alwaysBounceHorizontal = true
             self.view.addSubview(collectionView!)
             
             let refreshControl = UIRefreshControl()
-            refreshControl.tintColor = UIColor.whiteColor()
+            refreshControl.tintColor = Constants.RED
             refreshControl.addTarget(self, action: #selector(self.refresh), forControlEvents: .ValueChanged)
             collectionView!.addSubview(refreshControl)
             collectionView!.alwaysBounceVertical = true
             
             let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-            activityIndicatorView.color = UIColor.whiteColor()
+            activityIndicatorView.color = Constants.RED
             collectionView!.backgroundView = activityIndicatorView
             
             self.activityIndicatorView = activityIndicatorView
             self.navigationItem.title = categoryname.uppercaseString
+            //self.edgesForExtendedLayout = UIRectEdgeNone;
+            //self.extendedLayoutIncludesOpaqueBars = false;
+            //self.automaticallyAdjustsScrollViewInsets = false;
+            self.tabBarController!.tabBar.translucent = false
             
             getConfigFromServer()
         }
@@ -83,10 +108,17 @@ import AVFoundation
         
         func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
             cell.layer.cornerRadius = 6
-            cell.backgroundColor = Constants.RED
+            cell.backgroundColor = Constants.GREEN
+        }
+        
+        func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+            let cellToDeSelect:UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
+            cellToDeSelect.backgroundColor = Constants.GREEN
         }
         
         func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+            let cellToSelect:UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
+            cellToSelect.backgroundColor = Constants.RED
             let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
             let player = AVPlayer(URL: videoURL!)
             let playerViewController = AVPlayerViewController()
@@ -122,7 +154,7 @@ import AVFoundation
             } else {
                 // Not cached, so load then fade it in.
                 cell.imageView.alpha = 0
-                cell.backGround.image = Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "noimage2.png")!)
+                cell.backGround.image = Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "300200.png")!)
                 cell.backGround.alpha=1
                 cell.imageUrl.fetchImage { image in
                     // Check the cell hasn't recycled while loading.

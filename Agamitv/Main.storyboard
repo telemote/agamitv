@@ -208,7 +208,7 @@
                         <viewControllerLayoutGuide type="bottom" id="D0y-El-fTt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fJQ-6e-w67">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1RQ-l4-tOX">
@@ -239,16 +239,11 @@
                         <constraints>
                             <constraint firstItem="1RQ-l4-tOX" firstAttribute="leading" secondItem="fJQ-6e-w67" secondAttribute="leadingMargin" constant="-20" id="7Xq-Fp-Shp"/>
                             <constraint firstItem="D0y-El-fTt" firstAttribute="top" secondItem="1RQ-l4-tOX" secondAttribute="bottom" id="JEW-0Z-avP"/>
-                            <constraint firstItem="1RQ-l4-tOX" firstAttribute="top" secondItem="9t1-B2-2B7" secondAttribute="bottom" constant="8" id="Wxt-4O-xAX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1RQ-l4-tOX" secondAttribute="trailing" constant="-20" id="YWh-YS-EFC"/>
                             <constraint firstItem="1RQ-l4-tOX" firstAttribute="top" secondItem="9t1-B2-2B7" secondAttribute="bottom" id="lLx-Ld-9RD"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Wxt-4O-xAX"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="1RQ-l4-tOX" id="iMk-El-mam"/>
@@ -350,7 +345,7 @@
         <!--Videos-->
         <scene sceneID="ucF-mg-Wsf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iq3-H3-lTn" sceneMemberID="viewController">
+                <navigationController id="iq3-H3-lTn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Videos" image="video" id="Upw-P6-EFd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WV5-OU-2F4">

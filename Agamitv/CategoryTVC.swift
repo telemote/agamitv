@@ -21,7 +21,7 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(CategoryTVC.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.tintColor = Constants.RED
         return refreshControl
     }()
     
@@ -34,21 +34,21 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         self.tableView.addSubview(self.refreshControl)
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicatorView.color = UIColor.whiteColor()
+        activityIndicatorView.color = Constants.RED
         
         self.tableView.backgroundView = activityIndicatorView
         self.activityIndicatorView = activityIndicatorView
         
-        self.tableView.backgroundColor = Constants.GREEN
-        self.tableView.backgroundView!.backgroundColor = Constants.GREEN
+       // self.tableView.backgroundColor = Constants.GREEN
+       // self.tableView.backgroundView!.backgroundColor = Constants.GREEN
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        self.view.backgroundColor = Constants.GREEN
+        self.view.backgroundColor = Constants.WHITE
         
         self.navigationController!.navigationBar.translucent = false
-        self.navigationController!.navigationBar.barTintColor = Constants.RED
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationItem.title = "AgamiTV"
+        self.navigationController!.navigationBar.barTintColor = Constants.WHITE
+        self.navigationController!.navigationBar.tintColor = Constants.RED
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.RED]
+        self.navigationItem.title = "VIDEOS"
         
         getConfigFromServer()
     }
@@ -133,8 +133,8 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         // add border and color
-        cell.backgroundColor = Constants.RED
-        cell.layer.borderColor = Constants.RED.CGColor
+        cell.backgroundColor = Constants.GREEN
+        cell.layer.borderColor = Constants.GREEN.CGColor
         cell.layer.borderWidth = 3
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
@@ -166,14 +166,18 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cellToDeSelect:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        cellToDeSelect.layer.borderColor = Constants.RED.CGColor
+        //cellToDeSelect.layer.borderColor = Constants.RED.CGColor
+        cellToDeSelect.backgroundColor = Constants.GREEN
+        cellToDeSelect.layer.borderColor = Constants.GREEN.CGColor
     }
     
     // method to run when table view cell is tapped
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tabSwitch = false
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        selectedCell.layer.borderColor = UIColor.whiteColor().CGColor
+        //selectedCell.layer.borderColor = UIColor.whiteColor().CGColor
+        selectedCell.backgroundColor = Constants.RED
+        selectedCell.layer.borderColor = Constants.RED.CGColor
         self.categoryid = categories[indexPath.section].id
         self.categoryname = categories[indexPath.section].display
         performSegueWithIdentifier("category", sender: self)

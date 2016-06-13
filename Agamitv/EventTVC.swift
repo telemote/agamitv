@@ -23,7 +23,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(EventTVC.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.tintColor = Constants.RED
         return refreshControl
     }()
     
@@ -31,14 +31,15 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         self.tableView.addSubview(self.refreshControl)
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicatorView.color = UIColor.whiteColor()
+        activityIndicatorView.color = Constants.RED
         tableView.backgroundView = activityIndicatorView
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.activityIndicatorView = activityIndicatorView
         
-        self.tableView.backgroundColor = Constants.GREEN
-        self.tableView.backgroundView!.backgroundColor = Constants.GREEN
-        self.view.backgroundColor = Constants.GREEN
+        //self.tableView.backgroundColor = Constants.GREEN
+        //self.tableView.backgroundView!.backgroundColor = Constants.GREEN
+        //self.view.backgroundColor = Constants.GREEN
+        self.view.backgroundColor = Constants.WHITE
         
         // add app wide header
         let headerView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, 64))
@@ -50,7 +51,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             string: "AgamiTV",
             attributes:[ NSForegroundColorAttributeName: UIColor.whiteColor()])
         headerView.addSubview(textLabel)
-        self.view.addSubview(headerView)
+       // self.view.addSubview(headerView)
         
     }
     
@@ -154,7 +155,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         } else {
             // Not cached, so load then fade it in.
             cell.thumbnail.alpha = 0
-            cell.backGround.image = UIImage(named: "noimage1.png")!
+            cell.backGround.image = UIImage(named: "300300.png")!
             cell.backGround.alpha=1
             cell.imageUrl.fetchImage { image in
                 // Check the cell hasn't recycled while loading.
@@ -174,9 +175,9 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.layer.borderColor = UIColor.whiteColor().CGColor
-        cell.layer.borderWidth = 3
-        cell.layer.cornerRadius = 6
-        cell.backgroundColor = UIColor.redColor()
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 12
+        cell.backgroundColor = Constants.GREEN
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -193,7 +194,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
-        v.backgroundColor = Constants.GREEN
+        //v.backgroundColor = Constants.GREEN
         return v
     }
 }

@@ -23,7 +23,7 @@ class AboutVC: UIViewController {
             string: "AgamiTV",
             attributes:[ NSForegroundColorAttributeName: UIColor.whiteColor()])
         headerView.addSubview(textLabel)
-        self.view.addSubview(headerView)
+        //self.view.addSubview(headerView)
         
         // add logo
         let logo = UIImageView(frame: CGRect(x: self.view.frame.size.width/2-100, y: 70, width: 200, height: 200))

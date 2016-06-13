@@ -21,7 +21,7 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(LiveTVC.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.tintColor = Constants.RED
         return refreshControl
     }()
     
@@ -31,14 +31,15 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         self.tableView.addSubview(self.refreshControl)
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicatorView.color = UIColor.whiteColor()
+        activityIndicatorView.color = Constants.RED
         tableView.backgroundView = activityIndicatorView
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.activityIndicatorView = activityIndicatorView
         
-        self.tableView.backgroundColor = Constants.GREEN
-        self.tableView.backgroundView!.backgroundColor = Constants.GREEN
-        self.view.backgroundColor = Constants.GREEN
+       // self.tableView.backgroundColor = Constants.GREEN
+       // self.tableView.backgroundView!.backgroundColor = Constants.GREEN
+       // self.view.backgroundColor = Constants.GREEN
+        self.view.backgroundColor = Constants.WHITE
         
         // add app wide header
         let headerView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, 64))
@@ -50,7 +51,7 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             string: "AgamiTV",
             attributes:[ NSForegroundColorAttributeName: UIColor.whiteColor()])
         headerView.addSubview(textLabel)
-        self.view.addSubview(headerView)
+       // self.view.addSubview(headerView)
         
         getConfigFromServer()
     }
@@ -130,10 +131,10 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layer.borderColor = UIColor.whiteColor().CGColor
-        cell.layer.borderWidth = 3
-        cell.layer.cornerRadius = 6
-        cell.backgroundColor = UIColor.redColor()
+        cell.layer.borderColor = Constants.WHITE.CGColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 12
+        cell.backgroundColor = Constants.GREEN
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -165,7 +166,7 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         } else {
             // Not cached, so load then fade it in.
             cell.thumbnail.alpha = 0
-            cell.backGround.image = videos[indexPath.section].videoUrl.characters.count == 0 ? UIImage(named: "noimage1.png") : Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "noimage1.png")!)
+            cell.backGround.image = videos[indexPath.section].videoUrl.characters.count == 0 ? UIImage(named: "300300.png") : Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "300300.png")!)
             cell.backGround.alpha=1
             cell.imageUrl.fetchImage { image in
                 // Check the cell hasn't recycled while loading.
@@ -196,15 +197,26 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
-        v.backgroundColor = Constants.GREEN
+        //v.backgroundColor = Constants.GREEN
         return v
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cellToDeSelect:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        //cellToDeSelect.layer.borderColor = Constants.RED.CGColor
+        cellToDeSelect.backgroundColor = Constants.GREEN
+        cellToDeSelect.layer.borderColor = Constants.WHITE.CGColor
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
         tabSwitch = false
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.backgroundColor = Constants.RED
+        selectedCell.layer.borderColor = Constants.WHITE.CGColor
         if(videos[indexPath.section].videoUrl.characters.count == 0) {
-            let alert = UIAlertController(title: "Live Soon", message: "Live from " + videos[indexPath.section].date , preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let alert = UIAlertController(title: nil, message: videos[indexPath.section].date , preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             return

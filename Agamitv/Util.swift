@@ -17,6 +17,7 @@ struct Constants {
     static let CONFIG_FILE_PATH = "http://ww2.agamitv.com/ios/config/ios.json"
     static let GREEN = UIColor(red:14, green: 86, blue: 43)
     static let RED = UIColor(red:227, green: 0, blue: 28)
+    static let WHITE = UIColor.whiteColor()
 }
 
 class Helper {
@@ -26,7 +27,7 @@ class Helper {
                             y: (backgroundImage.size.height)/2-(foreGroundImage?.size.height)!/2)
         UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
         backgroundImage.drawInRect(CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height))
-        foreGroundImage! .drawInRect(CGRectMake(point.x, point.y, foreGroundImage!.size.width, foreGroundImage!.size.height), blendMode: CGBlendMode.Normal, alpha: 0.6)
+        foreGroundImage! .drawInRect(CGRectMake(point.x, point.y, foreGroundImage!.size.width, foreGroundImage!.size.height), blendMode: CGBlendMode.Normal, alpha: 0.8)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
