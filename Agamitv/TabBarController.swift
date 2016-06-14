@@ -14,7 +14,7 @@ class TabBarController: UITabBarController {
         UITabBar.appearance().tintColor = UIColor.whiteColor()
         
         // Sets the default color of the background of the UITabBar
-        UITabBar.appearance().barTintColor = UIColor.redColor()
+        UITabBar.appearance().barTintColor = Constants.GREEN
         
         // Sets the background color of the selected UITabBarItem (using and plain colored UIImage with the width = 1/5 of the tabBar (if you have 5 items) and the height of the tabBar)
        // UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.blueColor(), size: CGSizeMake(tabBar.frame.width/5, tabBar.frame.height))
@@ -50,6 +50,8 @@ class TabBarController: UITabBarController {
                 do{
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
+                    let liveevents = json["live"] as? [[String: AnyObject]]
+                    let events = json["events"] as? [[String: AnyObject]]
                     
                     if let entries = json["tabs"] as? [String] {
                         
@@ -69,6 +71,18 @@ class TabBarController: UITabBarController {
                              self.tabBar.items?[1].title = self.tabs[1]
                              self.tabBar.items?[2].title = self.tabs[2]
                             self.tabBar.items?[3].title = self.tabs[3]
+                            self.tabBar.items?[4].title = self.tabs[4]
+                            //live feed count
+                            
+                            
+                            if(liveevents?.count > 0) {
+                                let x:Int = (liveevents?.count)!
+                                self.tabBar.items?[1].badgeValue = String(x)
+                            }
+                            if(events?.count > 0) {
+                                let x:Int = (events?.count)!
+                                self.tabBar.items?[3].badgeValue = String(x)
+                            }
                             
                         })
                         

@@ -49,6 +49,7 @@ class CategoryTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.navigationController!.navigationBar.tintColor = Constants.RED
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.RED]
         self.navigationItem.title = "VIDEOS"
+        self.tableView.rowHeight = 34.0
         
         getConfigFromServer()
     }

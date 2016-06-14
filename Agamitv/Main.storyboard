@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mxP-g3-l3Z" id="N8G-iY-nX0">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="126.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bx4-Q5-UwJ">
@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Kn-ab-ldq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="1613"/>
+            <point key="canvasLocation" x="324" y="1589"/>
         </scene>
         <!--Live-->
         <scene sceneID="JZL-5i-48X">
@@ -123,7 +123,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aad-2P-wZa" id="nSW-IZ-Mqs">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="126.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-JR-T65">
@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLW-iM-rjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="860"/>
+            <point key="canvasLocation" x="664" y="878"/>
         </scene>
         <!--VideoCVC-->
         <scene sceneID="5eM-ce-aER">
@@ -251,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8f-3M-lT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-41"/>
+            <point key="canvasLocation" x="2080" y="194"/>
         </scene>
         <!--CategoryTVC-->
         <scene sceneID="Uem-mU-oe5">
@@ -273,7 +273,7 @@
                                         <rect key="frame" x="0.0" y="92" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lYj-4s-kiF" id="7ax-ZI-kPh">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hia-OX-7B1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704" y="-128"/>
+            <point key="canvasLocation" x="1378" y="194"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vj1-RP-dsN">
@@ -312,15 +312,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="iq3-H3-lTn" kind="relationship" relationship="viewControllers" id="g5p-eY-5t9"/>
+                        <segue destination="rNh-JP-UfQ" kind="relationship" relationship="viewControllers" id="eQP-jL-zI1"/>
                         <segue destination="Et5-xy-KfT" kind="relationship" relationship="viewControllers" id="Bi1-Je-mA4"/>
+                        <segue destination="iq3-H3-lTn" kind="relationship" relationship="viewControllers" id="g5p-eY-5t9"/>
                         <segue destination="KR9-E3-KC7" kind="relationship" relationship="viewControllers" id="Qcq-yO-MrU"/>
                         <segue destination="3YS-xt-Zv5" kind="relationship" relationship="viewControllers" id="Iiv-W2-cEb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpe-Tn-QJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58" y="718"/>
+            <point key="canvasLocation" x="-212" y="328"/>
         </scene>
         <!--About-->
         <scene sceneID="cje-Go-q5c">
@@ -340,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBt-Wy-YeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90" y="1613"/>
+            <point key="canvasLocation" x="-468" y="1457"/>
         </scene>
         <!--Videos-->
         <scene sceneID="ucF-mg-Wsf">
@@ -359,12 +360,68 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgX-39-Anh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-108" y="-128"/>
+            <point key="canvasLocation" x="670" y="194"/>
+        </scene>
+        <!--Recent-->
+        <scene sceneID="4sW-PW-TPq">
+            <objects>
+                <viewController id="rNh-JP-UfQ" customClass="RecentCVC" customModule="AgamiTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ebU-sF-bMh"/>
+                        <viewControllerLayoutGuide type="bottom" id="4zP-6Z-zdL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iib-IF-2RB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n7d-kP-Nkg">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DSU-2a-jn9">
+                                    <size key="itemSize" width="110" height="106"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videocell" id="HhM-dG-Kkf" customClass="VideoCell" customModule="AgamiTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="90" height="120"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="n7d-kP-Nkg" firstAttribute="leading" secondItem="Iib-IF-2RB" secondAttribute="leadingMargin" constant="-20" id="PnJ-Mc-Arr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n7d-kP-Nkg" secondAttribute="trailing" constant="-20" id="Uk9-V5-cmJ"/>
+                            <constraint firstItem="4zP-6Z-zdL" firstAttribute="top" secondItem="n7d-kP-Nkg" secondAttribute="bottom" id="gHz-EG-qWZ"/>
+                            <constraint firstItem="n7d-kP-Nkg" firstAttribute="top" secondItem="ebU-sF-bMh" secondAttribute="bottom" constant="44" id="nXY-K7-T46"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <tabBarItem key="tabBarItem" title="Recent" image="Recent" id="ixs-FP-KAk"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="n7d-kP-Nkg" id="MRO-nN-uaL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Da-uc-1NZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="664" y="-504"/>
         </scene>
     </scenes>
     <resources>
         <image name="About" width="50" height="50"/>
         <image name="Live" width="50" height="50"/>
+        <image name="Recent" width="50" height="50"/>
         <image name="Upcoming" width="60" height="60"/>
         <image name="video" width="50" height="50"/>
     </resources>

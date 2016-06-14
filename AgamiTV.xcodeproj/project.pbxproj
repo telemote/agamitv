@@ -14,6 +14,8 @@
 		801718B71D07648B00143F40 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801718B61D07648B00143F40 /* Category.swift */; };
 		801859D61D0F606A00AF510D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 801859D51D0F606A00AF510D /* play.png */; };
 		801859D81D0F62F100AF510D /* playf.png in Resources */ = {isa = PBXBuildFile; fileRef = 801859D71D0F62F100AF510D /* playf.png */; };
+		801859DA1D0FAEC100AF510D /* RecentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801859D91D0FAEC100AF510D /* RecentCVC.swift */; };
+		801859DC1D0FB7B200AF510D /* 200200.png in Resources */ = {isa = PBXBuildFile; fileRef = 801859DB1D0FB7B200AF510D /* 200200.png */; };
 		805959D21CEF998700863A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959D11CEF998700863A14 /* AppDelegate.swift */; };
 		805959DA1CEF998700863A14 /* Agamitv.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 805959D81CEF998700863A14 /* Agamitv.xcdatamodeld */; };
 		805959DC1CEF998700863A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805959DB1CEF998700863A14 /* Assets.xcassets */; };
@@ -59,6 +61,8 @@
 		801718B61D07648B00143F40 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		801859D51D0F606A00AF510D /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		801859D71D0F62F100AF510D /* playf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playf.png; sourceTree = "<group>"; };
+		801859D91D0FAEC100AF510D /* RecentCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCVC.swift; sourceTree = "<group>"; };
+		801859DB1D0FB7B200AF510D /* 200200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 200200.png; sourceTree = "<group>"; };
 		805959CE1CEF998700863A14 /* AgamiTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgamiTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805959D11CEF998700863A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805959D91CEF998700863A14 /* Agamitv.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Agamitv.xcdatamodel; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			children = (
 				801693471D08ADB1000DB6B5 /* splash.png */,
 				80E4DDE01D0B7D7F002ECB09 /* 300200.png */,
+				801859DB1D0FB7B200AF510D /* 200200.png */,
 				80E4DDE21D0B7D84002ECB09 /* 300300.png */,
 				801859D71D0F62F100AF510D /* playf.png */,
 				801859D51D0F606A00AF510D /* play.png */,
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				80E060171D077BE000D4554F /* Main.storyboard */,
+				801859D91D0FAEC100AF510D /* RecentCVC.swift */,
 				801718B41D07624600143F40 /* CategoryTVC.swift */,
 				801718AC1D04EDAC00143F40 /* VideoCVC.swift */,
 				801718AA1D04ED5F00143F40 /* VideoCell.swift */,
@@ -304,6 +310,7 @@
 				801859D81D0F62F100AF510D /* playf.png in Resources */,
 				805959DF1CEF998700863A14 /* LaunchScreen.storyboard in Resources */,
 				80E060181D077BE000D4554F /* Main.storyboard in Resources */,
+				801859DC1D0FB7B200AF510D /* 200200.png in Resources */,
 				805959DC1CEF998700863A14 /* Assets.xcassets in Resources */,
 				801693481D08ADB1000DB6B5 /* splash.png in Resources */,
 				80E4DDE31D0B7D84002ECB09 /* 300300.png in Resources */,
@@ -340,6 +347,7 @@
 				80699FB81CFE2936005C2BD7 /* LiveTVC.swift in Sources */,
 				801718AB1D04ED5F00143F40 /* VideoCell.swift in Sources */,
 				801718B71D07648B00143F40 /* Category.swift in Sources */,
+				801859DA1D0FAEC100AF510D /* RecentCVC.swift in Sources */,
 				80D4B0FC1CF90DC50077248E /* VideoResource.swift in Sources */,
 				80906A9E1CFD1DE7007F437E /* Util.swift in Sources */,
 				805959D21CEF998700863A14 /* AppDelegate.swift in Sources */,

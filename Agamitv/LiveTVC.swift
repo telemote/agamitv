@@ -166,7 +166,7 @@ class LiveTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         } else {
             // Not cached, so load then fade it in.
             cell.thumbnail.alpha = 0
-            cell.backGround.image = videos[indexPath.section].videoUrl.characters.count == 0 ? UIImage(named: "300300.png") : Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "300300.png")!)
+            cell.backGround.image = videos[indexPath.section].videoUrl.characters.count == 0 ? UIImage(named: "200200.png") : Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "200200.png")!)
             cell.backGround.alpha=1
             cell.imageUrl.fetchImage { image in
                 // Check the cell hasn't recycled while loading.
