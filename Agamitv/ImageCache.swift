@@ -24,6 +24,29 @@ class MyImageCache {
     }()
 }
 
+extension UIImage {
+    
+    func addShadow(blurSize: CGFloat = 6.0) -> UIImage {
+        
+        let data : UnsafeMutablePointer<Void> = nil
+        let colorSpace:CGColorSpace = CGColorSpaceCreateDeviceRGB()!
+        let bitmapInfo : CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+        
+        let myColorValues:[CGFloat] = [0.0, 0.0, 0.0, 0.8]
+        let myColor = CGColorCreate(colorSpace, myColorValues)
+        
+        let shadowContext : CGContextRef = CGBitmapContextCreate(data, Int(self.size.width + blurSize), Int(self.size.height + blurSize), CGImageGetBitsPerComponent(self.CGImage), 0, colorSpace, bitmapInfo.rawValue)!
+        
+        CGContextSetShadowWithColor(shadowContext, CGSize(width: blurSize/2,height: -blurSize/2),  blurSize, myColor)
+        CGContextDrawImage(shadowContext, CGRect(x: 0, y: blurSize, width: self.size.width, height: self.size.height), self.CGImage)
+        
+        let shadowedCGImage : CGImageRef = CGBitmapContextCreateImage(shadowContext)!
+        let shadowedImage : UIImage = UIImage(CGImage: shadowedCGImage)
+        
+        return shadowedImage
+    }
+}
+
 extension NSURL {
     
     typealias ImageCacheCompletion = UIImage -> Void

@@ -14,22 +14,14 @@ class AboutVC: UIViewController {
         super.viewDidLoad()
         
         // add app wide header
-        let headerView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, 64))
-        headerView.backgroundColor = Constants.RED
-        let textLabel = UILabel(frame: CGRect(x: self.view.bounds.width/2-49, y: 28 , width: 100, height: 30))
-        textLabel.textAlignment = .Center
-        textLabel.font = UIFont.boldSystemFontOfSize(17.0)
-        textLabel.attributedText = NSMutableAttributedString(
-            string: "AgamiTV",
-            attributes:[ NSForegroundColorAttributeName: UIColor.whiteColor()])
-        headerView.addSubview(textLabel)
-        //self.view.addSubview(headerView)
+        self.view.addSubview(Helper.getAppHeder(self.view, headerText: "ABOUT"))
         
         // add logo
         let logo = UIImageView(frame: CGRect(x: self.view.frame.size.width/2-100, y: 70, width: 200, height: 200))
         logo.contentMode = UIViewContentMode.ScaleAspectFit
         logo.layer.cornerRadius = 8
-        logo.image = UIImage(named: "splash.png")
+        logo.clipsToBounds = true
+        logo.image = UIImage(named: "aboutlogo.png")
         self.view.addSubview(logo)
         
         // Add description
@@ -47,6 +39,8 @@ class AboutVC: UIViewController {
         link.addTarget(self, action: #selector(self.pressed(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(link)
     }
+    
+    
     
     func pressed(sender: UIButton!) {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://www.agamitv.com")!)

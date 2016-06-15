@@ -11,8 +11,8 @@ import Foundation
 
 class VideoResource {
     var videoUrl:String = ""
-    var imageUrl:String = ""
-    var desc:String = ""
+    var imageUrl:String = ""  // image 300 x 300
+    var desc:String = ""  // about 80 chars
     var date:String = ""
    // var imageData:NSData
     

@@ -16,69 +16,81 @@ import AVFoundation
 
     class VideoCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
         
-        @IBOutlet var collectionView: UICollectionView?
+        var segmentedControl: UISegmentedControl!
+        var collectionView: UICollectionView?
         weak var activityIndicatorView: UIActivityIndicatorView!
 
-        var categoryid:String = ""
+        var categoryid:String = "drama"
         var categoryname:String = ""
-        var smallbox:CGFloat = 150.0
-        var mediumbox:CGFloat = 168.0
-        var largebox:CGFloat = 128.0
-        var fontsize:CGFloat = 7.0
+        var smallbox:CGFloat = 147.0
+        var mediumbox:CGFloat = 174.0
+        var largebox:CGFloat = 126.0
         var margin:CGFloat = 4.0
 
         var videos: [VideoResource] = []
         
-        override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews();
-        let top = self.topLayoutGuide.length;
-        let bottom = self.bottomLayoutGuide.length;
-        let newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
-        self.collectionView!.contentInset = newInsets;
-        
-        }
-   
-        
         override func viewDidLoad() {
             super.viewDidLoad()
+            let app = UIApplication.sharedApplication()
+
+            
+            // add header
+            let appheader = Helper.getAppHeder(self.view, headerText: "VIDEOS")
+            self.view.addSubview(appheader)
+            
+            // add video categories
+            // Initialize
+            let items = ["DRAMA", "FASHION", "MUSIC", "MORE"]
+            segmentedControl = UISegmentedControl(items: items)
+            segmentedControl.selectedSegmentIndex = 0
+            
+            // Set up Frame and SegmentedControl
+            let frame = UIScreen.mainScreen().bounds
+            segmentedControl.frame = CGRectMake(frame.minX + 10, frame.minY + app.statusBarFrame.size.height + appheader.frame.size.height + 5,frame.width - 20, 28)
+            
+            // Style the Segmented Control
+            segmentedControl.layer.cornerRadius = 5.0  // Don't let background bleed
+            segmentedControl.backgroundColor = Constants.WHITE
+            segmentedControl.tintColor = Constants.RED
+            
+            // Add target action method
+            segmentedControl.addTarget(self, action: "categoryChanged:", forControlEvents: .ValueChanged)
+            
+            // Add this custom Segmented Control to our view
+            self.view.addSubview(segmentedControl)
+            
+            
+            
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
             
             var boxsize:CGFloat = 0.0
-            var marginsize:CGFloat = 0.0
-
             
             // for iphone 6 plus and 6s plus
             if(self.view.frame.width >= (largebox+margin)*3) {
                 boxsize = largebox
-                marginsize = margin
-                fontsize = 7.0
                 }
             //for iphone 6 and 6 plus
-            else if(self.view.frame.width >= (mediumbox+margin*3)*2){
+            else if(self.view.frame.width >= (mediumbox+margin)*2){
                 boxsize = mediumbox
-                marginsize = margin*3
-                fontsize = 9.0
             }
             //for iphone 4s, 5 and 5s
             else {
                 boxsize = smallbox
-                marginsize = margin
-                fontsize = 8.0
             }
-            layout.sectionInset = UIEdgeInsets(top: marginsize, left: marginsize, bottom: marginsize, right: marginsize)
+            layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
             layout.itemSize = CGSize(width: boxsize, height: boxsize)
             
-            let frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, (self.view.frame.size.height - self.tabBarController!.tabBar.frame.size.height-boxsize*3/7));
-
-            collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-           // collectionView = UICollectionView(frame: CGRect(x: 0, y: 0 , width: self.view.frame.width, height: self.view.frame.height/*-self.tabBarController!.tabBar.frame.size.height*/), collectionViewLayout: layout)
+            let cframe = CGRectMake( margin + self.view.frame.origin.x ,  margin + self.view.frame.origin.y + app.statusBarFrame.size.height + appheader.frame.size.height + segmentedControl.frame.size.height + 5, self.view.frame.size.width - 2*margin, (self.view.frame.size.height - self.tabBarController!.tabBar.frame.size.height - app.statusBarFrame.size.height - appheader.frame.size.height - segmentedControl.frame.size.height - 5 - 2*margin));
+            
+            collectionView = UICollectionView(frame: cframe, collectionViewLayout: layout)
+            
+            collectionView?.setCollectionViewLayout(layout, animated: false)
             
             collectionView!.dataSource = self
             collectionView!.delegate = self
             collectionView!.registerClass(VideoCell.self, forCellWithReuseIdentifier: "videocell")
             collectionView!.backgroundColor = Constants.WHITE
             collectionView?.alwaysBounceVertical = true
-            //collectionView?.alwaysBounceHorizontal = true
             self.view.addSubview(collectionView!)
             
             let refreshControl = UIRefreshControl()
@@ -90,13 +102,7 @@ import AVFoundation
             let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
             activityIndicatorView.color = Constants.RED
             collectionView!.backgroundView = activityIndicatorView
-            
             self.activityIndicatorView = activityIndicatorView
-            self.navigationItem.title = categoryname.uppercaseString
-            //self.edgesForExtendedLayout = UIRectEdgeNone;
-            //self.extendedLayoutIncludesOpaqueBars = false;
-            //self.automaticallyAdjustsScrollViewInsets = false;
-            self.tabBarController!.tabBar.translucent = false
             
             getConfigFromServer()
         }
@@ -112,13 +118,15 @@ import AVFoundation
         }
         
         func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-            let cellToDeSelect:UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
+            let cellToDeSelect:VideoCell = collectionView.cellForItemAtIndexPath(indexPath) as! VideoCell
             cellToDeSelect.backgroundColor = Constants.GREEN
+            cellToDeSelect.imageView.image = Helper.createUnselectedVideoImage(videos[indexPath.row].desc, inImage: cellToDeSelect.image)
         }
         
         func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-            let cellToSelect:UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
+            let cellToSelect:VideoCell = collectionView.cellForItemAtIndexPath(indexPath) as! VideoCell
             cellToSelect.backgroundColor = Constants.RED
+            cellToSelect.imageView.image = Helper.createSelectedVideoImage(videos[indexPath.row].desc, inImage: cellToSelect.image)
             let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
             let player = AVPlayer(URL: videoURL!)
             let playerViewController = AVPlayerViewController()
@@ -138,37 +146,60 @@ import AVFoundation
         
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videocell", forIndexPath: indexPath) as! VideoCell
-            cell.textLabel.attributedText = NSMutableAttributedString(
-                string: videos[indexPath.row].desc,
-                attributes: [NSFontAttributeName:UIFont( name: "AvenirNext-Bold", size: fontsize)!,
-                    NSForegroundColorAttributeName: UIColor.whiteColor()])
-            
+                       
             // Image loading.
             let url = NSURL(string: videos[indexPath.row].imageUrl)
             cell.imageUrl = url // For recycled cells' late image loads.
             if let image = cell.imageUrl.cachedImage {
                 // Cached: set immediately.
-                cell.imageView.image = Helper.drawPlayButtonWaterMark(inImage: image)
+                cell.imageView.image = Helper.createUnselectedVideoImage(self.videos[indexPath.row].desc, inImage: image)
                 cell.backGround.alpha=0
                 cell.imageView.alpha = 1
+                cell.image = image
             } else {
                 // Not cached, so load then fade it in.
                 cell.imageView.alpha = 0
-                cell.backGround.image = Helper.drawPlayButtonWaterMark(inImage: UIImage(named: "300200.png")!)
+                cell.backGround.image = UIImage(named: "300300.png")
                 cell.backGround.alpha=1
                 cell.imageUrl.fetchImage { image in
                     // Check the cell hasn't recycled while loading.
                     if cell.imageUrl.absoluteString == self.videos[indexPath.row].imageUrl {
-                        cell.imageView.image = Helper.drawPlayButtonWaterMark(inImage: image)
+                        //cell.imageView.image = Helper.drawPlayButtonWaterMark(inImage: image)
+                        cell.imageView.image = Helper.createUnselectedVideoImage(self.videos[indexPath.row].desc, inImage: image)
                         UIView.animateWithDuration(0.3) {
                             cell.backGround.alpha=0
                             cell.imageView.alpha = 1
                         }
+                        cell.image = image
                     }
                 }
             }
             
             return cell
+        }
+        
+        func categoryChanged(sender: UISegmentedControl) {
+            switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                categoryid = "drama"
+                getConfigFromServer()
+                break
+            case 1:
+                categoryid = "fashion"
+                getConfigFromServer()
+                break
+            case 2:
+                categoryid = "music"
+                getConfigFromServer()
+                break
+            case 3:
+                categoryid = "interview"
+                getConfigFromServer()
+                break
+            default:
+                break;
+            }
         }
         
         override func didReceiveMemoryWarning() {

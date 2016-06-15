@@ -14,12 +14,12 @@ import AVKit
 import AVFoundation
 
 
-class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     var collectionView: UICollectionView?
     var activityIndicatorView: UIActivityIndicatorView!
     
-    let categoryid:String = "recent"
+    let categoryid:String = "live"
     let smallbox:CGFloat = 147.0
     let mediumbox:CGFloat = 174.0
     let largebox:CGFloat = 126.0
@@ -30,7 +30,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         super.viewDidLoad()
         
         //add header
-        let appheader = Helper.getAppHeder(self.view, headerText: "RECENT")
+        let appheader = Helper.getAppHeder(self.view, headerText: "LIVE")
         self.view.addSubview(appheader)
         
         
@@ -41,11 +41,11 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         if(self.view.frame.width >= (largebox+margin)*3) {
             boxsize = largebox
         }
-        //for iphone 6 and 6 plus
+            //for iphone 6 and 6 plus
         else if(self.view.frame.width >= (mediumbox+margin)*2){
             boxsize = mediumbox
         }
-        //for iphone 4s, 5 and 5s
+            //for iphone 4s, 5 and 5s
         else {
             boxsize = smallbox
         }
@@ -56,7 +56,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         let app = UIApplication.sharedApplication()
         let frame = CGRectMake( margin + self.view.frame.origin.x ,  margin + self.view.frame.origin.y + app.statusBarFrame.size.height + appheader.frame.size.height, self.view.frame.size.width - 2*margin, (self.view.frame.size.height - self.tabBarController!.tabBar.frame.size.height - app.statusBarFrame.size.height - appheader.frame.size.height - 2*margin));
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-
+        
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerClass(VideoCell.self, forCellWithReuseIdentifier: "videocell")
@@ -74,7 +74,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         activityIndicatorView.color = Constants.RED
         collectionView!.backgroundView = activityIndicatorView
         self.activityIndicatorView = activityIndicatorView
-
+        
         // load config
         getConfigFromServer()
     }
@@ -87,16 +87,25 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         cell.layer.cornerRadius = 6
         cell.backgroundColor = Constants.GREEN
-        }
+    }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let cellToDeSelect:VideoCell = collectionView.cellForItemAtIndexPath(indexPath) as! VideoCell
         cellToDeSelect.backgroundColor = Constants.GREEN
-        cellToDeSelect.imageView.image = Helper.createUnselectedVideoImage(videos[indexPath.row].desc, inImage: cellToDeSelect.image)
+        cellToDeSelect.imageView.image = cellToDeSelect.videopath.characters.count == 0 ? Helper.createNoPlayVideoImage(self.videos[indexPath.row].desc, inImage: cellToDeSelect.image) : Helper.createUnselectedVideoImage(videos[indexPath.row].desc, inImage: cellToDeSelect.image)
+    
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cellToSelect:VideoCell = collectionView.cellForItemAtIndexPath(indexPath) as! VideoCell
+        if(cellToSelect.videopath.characters.count == 0) {
+            
+            let alert = UIAlertController(title: nil, message: cellToSelect.date , preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
         cellToSelect.backgroundColor = Constants.RED
         cellToSelect.imageView.image = Helper.createSelectedVideoImage(videos[indexPath.row].desc, inImage: cellToSelect.image)
         let videoURL = NSURL(string: videos[indexPath.row].videoUrl)
@@ -118,14 +127,17 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videocell", forIndexPath: indexPath) as! VideoCell
-   
+        
+        cell.videopath = videos[indexPath.row].videoUrl
+        cell.date = videos[indexPath.row].date
+        
         // Image loading.
         let url = NSURL(string: videos[indexPath.row].imageUrl)
         cell.imageUrl = url // For recycled cells' late image loads.
         if let image = cell.imageUrl.cachedImage {
             // Cached: set immediately.
             //cell.imageView.image = Helper.drawPlayButtonWaterMark(inImage: image)
-            cell.imageView.image = Helper.createUnselectedVideoImage(videos[indexPath.row].desc, inImage: image)
+            cell.imageView.image = videos[indexPath.row].videoUrl.characters.count == 0 ? Helper.createNoPlayVideoImage(videos[indexPath.row].desc, inImage: image) : Helper.createUnselectedVideoImage(videos[indexPath.row].desc, inImage: image)
             cell.backGround.alpha=0
             cell.imageView.alpha = 1
             cell.image = image
@@ -138,7 +150,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
                 // Check the cell hasn't recycled while loading.
                 if cell.imageUrl.absoluteString == self.videos[indexPath.row].imageUrl {
                     //cell.imageView.image = Helper.drawPlayButtonWaterMark(inImage: image)
-                    cell.imageView.image = Helper.createUnselectedVideoImage(self.videos[indexPath.row].desc, inImage: image)
+                    cell.imageView.image = self.videos[indexPath.row].videoUrl.characters.count == 0 ? Helper.createNoPlayVideoImage(self.videos[indexPath.row].desc, inImage: image) : Helper.createUnselectedVideoImage(self.videos[indexPath.row].desc, inImage: image)
                     UIView.animateWithDuration(0.3) {
                         cell.backGround.alpha=0
                         cell.imageView.alpha = 1
@@ -192,7 +204,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
                         for entry in entries {
                             self.videos.append(
                                 VideoResource(
-                                    videoUrl: paths[1] + "/" + (entry["video"] as? String)!,
+                                    videoUrl: (entry["video"] as? String)!,
                                     imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
                                     desc: (entry["desc"] as? String)!,
                                     date: (entry["date"] as? String)!
