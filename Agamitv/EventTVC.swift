@@ -41,9 +41,11 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //self.view.backgroundColor = Constants.GREEN
         self.view.backgroundColor = Constants.WHITE
         
-        // add app wide header
         
-       // self.view.addSubview(headerView)
+        //add header
+        let appheader = Helper.getAppHeder(self.view, headerText: "EVENTS")
+        self.view.addSubview(appheader)
+        
         
     }
     

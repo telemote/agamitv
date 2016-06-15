@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Retro TV Filled-50.png",
+      "filename" : "live50.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Retro TV Filled-51.png",
+      "filename" : "live50-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Retro TV Filled-52.png",
+      "filename" : "live75.png",
       "scale" : "3x"
     }
   ],
