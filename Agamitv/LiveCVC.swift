@@ -30,7 +30,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         super.viewDidLoad()
         
         //add header
-        let appheader = Helper.getAppHeder(self.view, headerText: "LIVE")
+        let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[1] as String).uppercaseString)
         self.view.addSubview(appheader)
         
         

@@ -160,8 +160,8 @@
 			children = (
 				80E060171D077BE000D4554F /* Main.storyboard */,
 				801859D91D0FAEC100AF510D /* RecentCVC.swift */,
-				801718AC1D04EDAC00143F40 /* VideoCVC.swift */,
 				80699FB71CFE2936005C2BD7 /* LiveCVC.swift */,
+				801718AC1D04EDAC00143F40 /* VideoCVC.swift */,
 				801718AA1D04ED5F00143F40 /* VideoCell.swift */,
 				80699FBD1CFE3DBE005C2BD7 /* EventTVC.swift */,
 				80699FBB1CFE3D30005C2BD7 /* EventCell.swift */,
@@ -506,6 +506,7 @@
 				PRODUCT_NAME = AgamiTV;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -521,6 +522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "agamitv-test1";
 				PRODUCT_NAME = AgamiTV;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

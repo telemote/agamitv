@@ -43,7 +43,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         //add header
-        let appheader = Helper.getAppHeder(self.view, headerText: "EVENTS")
+        let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[3] as String).uppercaseString)
         self.view.addSubview(appheader)
         
         
@@ -139,7 +139,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         // Image loading.
-        let url = NSURL(string: videos[indexPath.row].imageUrl)
+        let url = NSURL(string: videos[indexPath.section].imageUrl)
         cell.imageUrl = url // For recycled cells' late image loads.
         if let image = cell.imageUrl.cachedImage {
             // Cached: set immediately.
@@ -153,7 +153,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.backGround.alpha=1
             cell.imageUrl.fetchImage { image in
                 // Check the cell hasn't recycled while loading.
-                if cell.imageUrl.absoluteString == self.videos[indexPath.row].imageUrl {
+                if cell.imageUrl.absoluteString == self.videos[indexPath.section].imageUrl {
                     cell.thumbnail.image = image
                     UIView.animateWithDuration(0.3) {
                         cell.backGround.alpha=0
@@ -169,8 +169,8 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.layer.borderColor = UIColor.whiteColor().CGColor
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 12
+        cell.layer.borderWidth = 0
+        cell.layer.cornerRadius = 6
         cell.backgroundColor = Constants.GREEN
     }
     

@@ -22,6 +22,8 @@ struct Constants {
 
 class Helper {
     
+    static var tabs: [String] = ["Recent", "Shows", "Videos", "Upcoming", "About"]
+    
     static func createUnselectedVideoImage(drawText: NSString, inImage: UIImage) -> UIImage {
         return textToImage(drawText, inImage: drawPlayButtonWaterMark(inImage: inImage, playImage: UIImage(named: "whiteplay.png")!), atPoint: CGPointMake(10, inImage.size.height*3/4), textColor: UIColor.whiteColor())
     }

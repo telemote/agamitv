@@ -28,7 +28,7 @@ class TabBarController: UITabBarController {
         self.selectedIndex = 0
         getConfigFromServer()
     }
-     var tabs: [String] = []
+     //var tabs: [String] = []
     
     func getConfigFromServer(){
         let requestURL: NSURL = NSURL(string: Constants.CONFIG_FILE_PATH)!
@@ -59,7 +59,7 @@ class TabBarController: UITabBarController {
                         
                         
                         for entry in entries {
-                            self.tabs.append(entry)
+                            Helper.tabs.append(entry)
                            
                             i =  i+1
                             
@@ -67,11 +67,11 @@ class TabBarController: UITabBarController {
                     }
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                            
-                                self.tabBar.items?[0].title = self.tabs[0]
-                             self.tabBar.items?[1].title = self.tabs[1]
-                             self.tabBar.items?[2].title = self.tabs[2]
-                            self.tabBar.items?[3].title = self.tabs[3]
-                            self.tabBar.items?[4].title = self.tabs[4]
+                                self.tabBar.items?[0].title = Helper.tabs[0]
+                             self.tabBar.items?[1].title = Helper.tabs[1]
+                             self.tabBar.items?[2].title = Helper.tabs[2]
+                            self.tabBar.items?[3].title = Helper.tabs[3]
+                            self.tabBar.items?[4].title = Helper.tabs[4]
                             //live feed count
                             
                             

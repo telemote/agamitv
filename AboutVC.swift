@@ -14,7 +14,7 @@ class AboutVC: UIViewController {
         super.viewDidLoad()
         
         // add app wide header
-        self.view.addSubview(Helper.getAppHeder(self.view, headerText: "ABOUT"))
+        self.view.addSubview(Helper.getAppHeder(self.view, headerText: (Helper.tabs[4] as String).uppercaseString))
         
         // add logo
         let logo = UIImageView(frame: CGRect(x: self.view.frame.size.width/2-100, y: 70, width: 200, height: 200))

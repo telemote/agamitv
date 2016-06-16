@@ -18,57 +18,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-mZ-VJc">
-                                <rect key="frame" x="20" y="56" width="560" height="476"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-mZ-VJc">
+                                <rect key="frame" x="20" y="56" width="560" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventcell" rowHeight="127" id="mxP-g3-l3Z" customClass="EventCell" customModule="AgamiTV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="127"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventcell" rowHeight="106" id="mxP-g3-l3Z" customClass="EventCell" customModule="AgamiTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mxP-g3-l3Z" id="N8G-iY-nX0">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="126"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bx4-Q5-UwJ">
-                                                    <rect key="frame" x="13" y="13" width="100" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="dgx-nb-DwR"/>
-                                                        <constraint firstAttribute="width" constant="100" id="gFf-yK-Aty"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPf-Ka-s3i">
-                                                    <rect key="frame" x="121" y="13" width="426" height="21"/>
+                                                    <rect key="frame" x="111" y="13" width="436" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-k3-JXh">
-                                                    <rect key="frame" x="13" y="13" width="100" height="100"/>
+                                                    <rect key="frame" x="3" y="3" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="0DB-SJ-QbU"/>
                                                         <constraint firstAttribute="height" constant="100" id="F2y-sa-x5C"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Performance time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erp-qB-tdq">
-                                                    <rect key="frame" x="121" y="39" width="426" height="21"/>
+                                                    <rect key="frame" x="111" y="42" width="436" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bx4-Q5-UwJ">
+                                                    <rect key="frame" x="3" y="3" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="dgx-nb-DwR"/>
+                                                        <constraint firstAttribute="width" constant="100" id="gFf-yK-Aty"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="OPf-Ka-s3i" firstAttribute="leading" secondItem="jQu-k3-JXh" secondAttribute="trailing" constant="8" id="Atz-us-j0C"/>
-                                                <constraint firstItem="erp-qB-tdq" firstAttribute="leading" secondItem="jQu-k3-JXh" secondAttribute="trailing" constant="8" id="FNx-TP-jbO"/>
-                                                <constraint firstItem="Bx4-Q5-UwJ" firstAttribute="leading" secondItem="N8G-iY-nX0" secondAttribute="leadingMargin" constant="5" id="JCa-Ns-Ft5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="erp-qB-tdq" secondAttribute="trailing" constant="5" id="L2X-M3-ffH"/>
-                                                <constraint firstItem="OPf-Ka-s3i" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="5" id="Mse-8Q-plN"/>
-                                                <constraint firstItem="erp-qB-tdq" firstAttribute="top" secondItem="OPf-Ka-s3i" secondAttribute="bottom" constant="5" id="Vk2-Vy-JWm"/>
-                                                <constraint firstItem="Bx4-Q5-UwJ" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="5" id="h5D-jw-fb9"/>
-                                                <constraint firstItem="jQu-k3-JXh" firstAttribute="leading" secondItem="N8G-iY-nX0" secondAttribute="leadingMargin" constant="5" id="krY-Qh-h9p"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="erp-qB-tdq" secondAttribute="trailing" constant="5" id="l1R-D1-99A"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="OPf-Ka-s3i" secondAttribute="trailing" constant="5" id="lk5-9t-KCl"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="jQu-k3-JXh" secondAttribute="bottom" constant="5" id="mRm-FX-SPR"/>
-                                                <constraint firstItem="jQu-k3-JXh" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="5" id="nmc-Wd-tzx"/>
+                                                <constraint firstItem="erp-qB-tdq" firstAttribute="top" secondItem="OPf-Ka-s3i" secondAttribute="bottom" constant="8" id="AFV-gZ-bhm"/>
+                                                <constraint firstItem="jQu-k3-JXh" firstAttribute="leading" secondItem="N8G-iY-nX0" secondAttribute="leadingMargin" constant="-5" id="CkY-RQ-9vW"/>
+                                                <constraint firstItem="jQu-k3-JXh" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="-5" id="Ewq-Wm-1z6"/>
+                                                <constraint firstItem="erp-qB-tdq" firstAttribute="leading" secondItem="jQu-k3-JXh" secondAttribute="trailing" constant="8" id="L7s-Hz-hBn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OPf-Ka-s3i" secondAttribute="trailing" constant="5" id="Lz1-YV-3QQ"/>
+                                                <constraint firstItem="Bx4-Q5-UwJ" firstAttribute="leading" secondItem="N8G-iY-nX0" secondAttribute="leadingMargin" constant="-5" id="RwN-7D-KpZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="erp-qB-tdq" secondAttribute="trailing" constant="5" id="XQ6-kt-y0X"/>
+                                                <constraint firstItem="OPf-Ka-s3i" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="5" id="tsp-wy-isf"/>
+                                                <constraint firstItem="OPf-Ka-s3i" firstAttribute="leading" secondItem="jQu-k3-JXh" secondAttribute="trailing" constant="8" id="vm2-fN-1oj"/>
+                                                <constraint firstItem="Bx4-Q5-UwJ" firstAttribute="top" secondItem="N8G-iY-nX0" secondAttribute="topMargin" constant="-5" id="yGn-aL-ehy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -88,12 +86,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ljO-mZ-VJc" secondAttribute="trailing" id="JFK-Zf-c2e"/>
-                            <constraint firstItem="HVK-b9-2AY" firstAttribute="top" secondItem="ljO-mZ-VJc" secondAttribute="bottom" constant="19" id="Ubi-XN-msT"/>
+                            <constraint firstItem="HVK-b9-2AY" firstAttribute="top" secondItem="ljO-mZ-VJc" secondAttribute="bottom" constant="8" id="Ubi-XN-msT"/>
                             <constraint firstItem="ljO-mZ-VJc" firstAttribute="leading" secondItem="mxG-bq-MrA" secondAttribute="leadingMargin" id="tQA-Ya-HXJ"/>
                             <constraint firstItem="ljO-mZ-VJc" firstAttribute="top" secondItem="L0B-Zb-elR" secondAttribute="bottom" constant="36" id="wWs-0Y-LiK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Event" image="Upcoming" id="V5J-8Z-ChP"/>
+                    <tabBarItem key="tabBarItem" title="Event" image="EventUnselected" selectedImage="EventSelected" id="V5J-8Z-ChP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ljO-mZ-VJc" id="G0v-Ey-Vw3"/>
@@ -116,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Live" image="Live" id="nx1-ln-oaj"/>
+                    <tabBarItem key="tabBarItem" title="Live" image="LiveUnselected" selectedImage="LiveSelected" id="nx1-ln-oaj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLW-iM-rjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -137,7 +135,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Video" image="video" id="R0B-N0-082"/>
+                    <tabBarItem key="tabBarItem" title="Video" image="VideoUnselected" selectedImage="VideoSelected" id="R0B-N0-082"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8f-3M-lT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" image="About" id="zH8-QX-yrM"/>
+                    <tabBarItem key="tabBarItem" title="About" image="AboutUnselected" selectedImage="AboutSelected" id="zH8-QX-yrM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBt-Wy-YeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,7 +197,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Recent" image="Recent" id="ixs-FP-KAk"/>
+                    <tabBarItem key="tabBarItem" title="Recent" image="RecentUnselected" selectedImage="RecentSelected" id="ixs-FP-KAk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Da-uc-1NZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,10 +206,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="About" width="50" height="50"/>
-        <image name="Live" width="50" height="50"/>
-        <image name="Recent" width="50" height="50"/>
-        <image name="Upcoming" width="60" height="60"/>
-        <image name="video" width="50" height="50"/>
+        <image name="AboutSelected" width="50" height="50"/>
+        <image name="AboutUnselected" width="50" height="50"/>
+        <image name="EventSelected" width="50" height="50"/>
+        <image name="EventUnselected" width="50" height="50"/>
+        <image name="LiveSelected" width="50" height="50"/>
+        <image name="LiveUnselected" width="50" height="50"/>
+        <image name="RecentSelected" width="50" height="50"/>
+        <image name="RecentUnselected" width="50" height="50"/>
+        <image name="VideoSelected" width="50" height="50"/>
+        <image name="VideoUnselected" width="50" height="50"/>
     </resources>
 </document>

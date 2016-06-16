@@ -20,7 +20,7 @@ import AVFoundation
         var collectionView: UICollectionView?
         weak var activityIndicatorView: UIActivityIndicatorView!
 
-        var categoryid:String = "drama"
+        var categoryid:String = "fashion"
         var categoryname:String = ""
         var smallbox:CGFloat = 147.0
         var mediumbox:CGFloat = 174.0
@@ -35,14 +35,14 @@ import AVFoundation
 
             
             // add header
-            let appheader = Helper.getAppHeder(self.view, headerText: "VIDEOS")
+            let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[2] as String).uppercaseString)
             self.view.addSubview(appheader)
             
             // add video categories
             // Initialize
             let items = ["DRAMA", "FASHION", "MUSIC", "MORE"]
             segmentedControl = UISegmentedControl(items: items)
-            segmentedControl.selectedSegmentIndex = 0
+            segmentedControl.selectedSegmentIndex = 1
             
             // Set up Frame and SegmentedControl
             let frame = UIScreen.mainScreen().bounds
@@ -194,7 +194,7 @@ import AVFoundation
                 getConfigFromServer()
                 break
             case 3:
-                categoryid = "interview"
+                categoryid = "more"
                 getConfigFromServer()
                 break
             default:

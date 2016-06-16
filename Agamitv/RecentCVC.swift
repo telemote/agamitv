@@ -30,7 +30,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         super.viewDidLoad()
         
         //add header
-        let appheader = Helper.getAppHeder(self.view, headerText: "RECENT")
+        let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[0] as String).uppercaseString)
         self.view.addSubview(appheader)
         
         
