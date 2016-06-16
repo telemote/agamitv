@@ -25,6 +25,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     let largebox:CGFloat = 126.0
     let margin:CGFloat = 4.0
     var videos: [VideoResource] = []
+    var tabSwitch = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,16 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         self.activityIndicatorView = activityIndicatorView
         
         // load config
-        getConfigFromServer()
+        //getConfigFromServer()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if(tabSwitch == true) {
+            getConfigFromServer()
+        }else {
+            tabSwitch = true
+        }
     }
     
     func refresh(refreshControl: UIRefreshControl) {
@@ -97,6 +107,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        tabSwitch = false
         let cellToSelect:VideoCell = collectionView.cellForItemAtIndexPath(indexPath) as! VideoCell
         if(cellToSelect.videopath.characters.count == 0) {
             
@@ -105,6 +116,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }
+        
         
         cellToSelect.backgroundColor = Constants.RED
         cellToSelect.imageView.image = Helper.createSelectedVideoImage(videos[indexPath.row].desc, inImage: cellToSelect.image)
@@ -192,6 +204,8 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
                 self.videos.removeAll() //clear all old entries
                 do{
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
+                    let liveevents = json["live"] as? [[String: AnyObject]]
+                    let events = json["events"] as? [[String: AnyObject]]
                     
                     // load paths
                     var paths: [String] = []
@@ -200,6 +214,15 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
                             paths.append(entry)
                         }
                     }
+                    
+                    //load tabs
+                    if let entries = json["tabs"] as? [String] {
+                        Helper.tabs.removeAll()
+                        for entry in entries {
+                            Helper.tabs.append(entry)
+                        }
+                    }
+                    
                     if let entries = json[self.categoryid] as? [[String: AnyObject]] {
                         for entry in entries {
                             self.videos.append(
@@ -214,6 +237,23 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.collectionView!.reloadData()
                             self.activityIndicatorView.stopAnimating()
+                            
+                            // update tabs
+                            self.tabBarController!.tabBar.items?[0].title = Helper.tabs[0]
+                            self.tabBarController!.tabBar.items?[1].title = Helper.tabs[1]
+                            self.tabBarController!.tabBar.items?[2].title = Helper.tabs[2]
+                            self.tabBarController!.tabBar.items?[3].title = Helper.tabs[3]
+                            self.tabBarController!.tabBar.items?[4].title = Helper.tabs[4]
+                            
+                            //live feed count
+                            if(liveevents?.count > 0) {
+                                let x:Int = (liveevents?.count)!
+                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                            }
+                            if(events?.count > 0) {
+                                let x:Int = (events?.count)!
+                                self.tabBarController!.tabBar.items?[3].badgeValue = String(x)
+                            }
                         })
                     }
                 }catch {}

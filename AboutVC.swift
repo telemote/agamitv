@@ -45,5 +45,73 @@ class AboutVC: UIViewController {
     func pressed(sender: UIButton!) {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://www.agamitv.com")!)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        getConfigFromServer()
+    }
+    
+    func getConfigFromServer(){
+        
+        let requestURL: NSURL = NSURL(string: Constants.CONFIG_FILE_PATH)!
+        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL,
+                                                                  cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
+                                                                  timeoutInterval: 15.0)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(urlRequest) {
+            (data, response, error) -> Void in
+            
+            if(error != nil) {
+                return;
+            }
+            
+            let httpResponse = response as! NSHTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            
+            if (statusCode == 200) {
+         
+                do{
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
+                    let liveevents = json["live"] as? [[String: AnyObject]]
+                    let events = json["events"] as? [[String: AnyObject]]
+                    
+         
+                    
+                    //load tabs
+                    if let entries = json["tabs"] as? [String] {
+                        Helper.tabs.removeAll()
+                        for entry in entries {
+                            Helper.tabs.append(entry)
+                        }
+                    }
+                    
+         
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+         
+                            
+                            // update tabs
+                            self.tabBarController!.tabBar.items?[0].title = Helper.tabs[0]
+                            self.tabBarController!.tabBar.items?[1].title = Helper.tabs[1]
+                            self.tabBarController!.tabBar.items?[2].title = Helper.tabs[2]
+                            self.tabBarController!.tabBar.items?[3].title = Helper.tabs[3]
+                            self.tabBarController!.tabBar.items?[4].title = Helper.tabs[4]
+                            
+                            //live feed count
+                            if(liveevents?.count > 0) {
+                                let x:Int = (liveevents?.count)!
+                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                            }
+                            if(events?.count > 0) {
+                                let x:Int = (events?.count)!
+                                self.tabBarController!.tabBar.items?[3].badgeValue = String(x)
+                            }
+                        })
+         
+                }catch {}
+            }
+        }
+        task.resume()
+    }
+    
 
 }

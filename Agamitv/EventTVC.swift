@@ -79,12 +79,22 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 self.videos.removeAll() //clear all old entries
                 do{
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
+                    let liveevents = json["live"] as? [[String: AnyObject]]
+                    let events = json["events"] as? [[String: AnyObject]]
                     
                     // load paths
                     var paths: [String] = []
                     if let entries = json["paths"] as? [String] {
                         for entry in entries {
                             paths.append(entry)
+                        }
+                    }
+                    
+                    //load tabs
+                    if let entries = json["tabs"] as? [String] {
+                        Helper.tabs.removeAll()
+                        for entry in entries {
+                            Helper.tabs.append(entry)
                         }
                     }
                     
@@ -102,6 +112,23 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.tableView.reloadData()
                             self.activityIndicatorView.stopAnimating()
+                            
+                            // update tabs
+                            self.tabBarController!.tabBar.items?[0].title = Helper.tabs[0]
+                            self.tabBarController!.tabBar.items?[1].title = Helper.tabs[1]
+                            self.tabBarController!.tabBar.items?[2].title = Helper.tabs[2]
+                            self.tabBarController!.tabBar.items?[3].title = Helper.tabs[3]
+                            self.tabBarController!.tabBar.items?[4].title = Helper.tabs[4]
+                            
+                            //live feed count
+                            if(liveevents?.count > 0) {
+                                let x:Int = (liveevents?.count)!
+                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                            }
+                            if(events?.count > 0) {
+                                let x:Int = (events?.count)!
+                                self.tabBarController!.tabBar.items?[3].badgeValue = String(x)
+                            }
                         })
                         
                     }

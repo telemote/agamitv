@@ -54,27 +54,20 @@ class TabBarController: UITabBarController {
                     let events = json["events"] as? [[String: AnyObject]]
                     
                     if let entries = json["tabs"] as? [String] {
-                        
-                        var i:Int = 0
-                        
-                        
+                        Helper.tabs.removeAll()
                         for entry in entries {
                             Helper.tabs.append(entry)
-                           
-                            i =  i+1
-                            
-                            
-                    }
+                        }
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                            
-                                self.tabBar.items?[0].title = Helper.tabs[0]
-                             self.tabBar.items?[1].title = Helper.tabs[1]
-                             self.tabBar.items?[2].title = Helper.tabs[2]
+                            // update tabs
+                            self.tabBar.items?[0].title = Helper.tabs[0]
+                            self.tabBar.items?[1].title = Helper.tabs[1]
+                            self.tabBar.items?[2].title = Helper.tabs[2]
                             self.tabBar.items?[3].title = Helper.tabs[3]
                             self.tabBar.items?[4].title = Helper.tabs[4]
+                            
                             //live feed count
-                            
-                            
                             if(liveevents?.count > 0) {
                                 let x:Int = (liveevents?.count)!
                                 self.tabBar.items?[1].badgeValue = String(x)
