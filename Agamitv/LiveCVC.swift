@@ -114,6 +114,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
             let alert = UIAlertController(title: nil, message: cellToSelect.date , preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            getConfigFromServer() // reload to get feed update
             return
         }
         

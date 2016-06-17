@@ -29,7 +29,7 @@ class AboutVC: UIViewController {
         descLabel.numberOfLines = 0
         descLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         descLabel.textAlignment = .Center
-        descLabel.text = "AgamiTV is dedicated to create and deliver high quality video content to show case the Bengali culture and history. We are located in Austin, Texas."
+        descLabel.text = "AgamiTV is dedicated to produce and deliver high-quality video content to showcase the Bengali culture, literature and history. We are located in Austin, Texas. "
         self.view.addSubview(descLabel)
         
         //weblink

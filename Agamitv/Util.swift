@@ -14,7 +14,7 @@ import AVKit
 import AVFoundation
 
 struct Constants {
-    static let CONFIG_FILE_PATH = "http://ww2.agamitv.com/ios/config/ios.json"
+    static let CONFIG_FILE_PATH = "http://www.agamitv.com/ios/config/ios.json"
     static let GREEN = UIColor(red:14, green: 86, blue: 43)
     static let RED = UIColor(red:227, green: 0, blue: 28)
     static let WHITE = UIColor.whiteColor()
@@ -25,11 +25,28 @@ class Helper {
     static var tabs: [String] = ["Recent", "Shows", "Videos", "Upcoming", "About"]
     
     static func createUnselectedVideoImage(drawText: NSString, inImage: UIImage) -> UIImage {
-        return textToImage(drawText, inImage: drawPlayButtonWaterMark(inImage: inImage, playImage: UIImage(named: "whiteplay.png")!), atPoint: CGPointMake(10, inImage.size.height*3/4), textColor: UIColor.whiteColor())
+        
+        let imageWithCircle = drawPlayButtonWaterMark(inImage: inImage,
+                                                      playImage: UIImage(named: "circle96black.png")!,
+                                                      alpha: 0.4)
+        return textToImage(drawText,
+                           inImage: drawPlayButtonWaterMark(inImage: imageWithCircle,
+                                                            playImage: UIImage(named: "play100white.png")!,
+                                                            alpha: 1.0),
+                           atPoint: CGPointMake(10, inImage.size.height*5/6),
+                           textColor: UIColor.whiteColor())
     }
     
     static func createSelectedVideoImage(drawText: NSString, inImage: UIImage) -> UIImage {
-        return textToImage(drawText, inImage: drawPlayButtonWaterMark(inImage: inImage, playImage: UIImage(named: "redplay.png")!), atPoint: CGPointMake(10, inImage.size.height*3/4), textColor: UIColor.redColor())
+        let imageWithCircle = drawPlayButtonWaterMark(inImage: inImage,
+                                                      playImage: UIImage(named: "circle96black.png")!,
+                                                      alpha: 0.4)
+        return textToImage(drawText,
+                           inImage: drawPlayButtonWaterMark(inImage: imageWithCircle,
+                                                            playImage: UIImage(named: "play100red.png")!,
+                                                            alpha: 1.0),
+                           atPoint: CGPointMake(10, inImage.size.height*5/6),
+                           textColor: UIColor.redColor())
     }
     
     static func createNoPlayVideoImage(drawText: NSString, inImage: UIImage) -> UIImage {
@@ -43,10 +60,10 @@ class Helper {
         img.drawAtPoint(CGPointMake(0, 0))
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let locations:[CGFloat] = [0.50, 1.0]
+        let locations:[CGFloat] = [0.80, 1.0]
         //1 = opaque
         //0 = transparent
-        let bottom = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).CGColor
+        let bottom = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).CGColor
         let top = UIColor(red: 0, green: 0, blue: 0, alpha: 0).CGColor
         
         let gradient = CGGradientCreateWithColors(colorSpace, [top, bottom], locations)
@@ -60,13 +77,13 @@ class Helper {
         return image
     }
     
-    static func drawPlayButtonWaterMark(inImage backgroundImage:UIImage, playImage foreGroundImage:UIImage) -> UIImage{
+    static func drawPlayButtonWaterMark(inImage backgroundImage:UIImage, playImage foreGroundImage:UIImage, alpha imageAlpha:CGFloat) -> UIImage{
         //let foreGroundImage = UIImage(named: "playf.png")
         let point = CGPoint(x: (backgroundImage.size.width)/2-(foreGroundImage.size.width)/2,
                             y: (backgroundImage.size.height)/2-(foreGroundImage.size.height)/2)
         UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
         backgroundImage.drawInRect(CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height))
-        foreGroundImage .drawInRect(CGRectMake(point.x, point.y, foreGroundImage.size.width, foreGroundImage.size.height), blendMode: CGBlendMode.Normal, alpha: 1.0)
+        foreGroundImage .drawInRect(CGRectMake(point.x, point.y, foreGroundImage.size.width, foreGroundImage.size.height), blendMode: CGBlendMode.Normal, alpha: imageAlpha)
         var newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return Helper.imageWithGradient(newImage)
