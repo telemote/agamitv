@@ -17,7 +17,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        _ = Pushbots(appId:"5767a1b24a9efa93388b4569", prompt: true);
+        Pushbots.sharedInstance().trackPushNotificationOpenedWithPayload(launchOptions);
+       /* if launchOptions != nil {
+            if let userInfo = launchOptions![UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
+                //Capture notification data e.g. badge, alert and sound
+                if let aps = userInfo["aps"] as? NSDictionary {
+                    let alert = aps["alert"] as! String
+                    let title = userInfo["title"] as? NSString
+                    //let tab = aps["tab"] as! String
+                    //print("Notification message: ", alert);
+                    
+                       // Helper.selectedTab = Int(tab)!
+                    
+                    UIAlertView(title:"didFinishLaunchingWithOptions", message:alert, delegate:nil, cancelButtonTitle:"OK").show()
+                }
+                
+                //Capture custom fields
+               if let articleId = userInfo["articleId"] as? NSString {
+                    print("ArticleId: ", articleId);
+                    UIAlertView(title:"Push Notification!", message:articleId as String, delegate:nil, cancelButtonTitle:"OK").show()
+                }
+            }
+        }*/
         return true
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        //Track notification only if the application opened from Background by clicking on the notification.
+        if application.applicationState == .Inactive  {
+            Pushbots.sharedInstance().trackPushNotificationOpenedWithPayload(userInfo);
+        }
+        
+        //The application was already active when the user got the notification, just show an alert.
+        //That should *not* be considered open from Push.
+        if application.applicationState == .Active  {
+            //Capture notification data e.g. badge, alert and sound
+          /*  if let aps = userInfo["aps"] as? NSDictionary {
+                let alert = aps["alert"] as! String
+                let title = aps["title"] as! String
+                let tab = aps["tab"] as! String
+                
+                 Helper.selectedTab = Int(tab)!
+                
+                UIAlertView(title:title, message:alert, delegate:nil, cancelButtonTitle:"OK").show()
+                //UIAlertView(title:"Push Notification!", message:alert, delegate:nil, cancelButtonTitle:"OK").show()
+            }*/
+        }
+        
+    }
+    
+    func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        // .. Process notification data
+        //handler(UIBackgroundFetchResult.NewData)
+        if let aps = userInfo["aps"] as? NSDictionary {
+            let alert = aps["alert"] as! String
+            let title = userInfo["title"] as? NSString
+            UIAlertView(title:title as! String, message:alert, delegate:nil, cancelButtonTitle:"OK").show()
+        }
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -105,6 +163,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // This method will be called everytime you open the app
+        // Register the deviceToken on Pushbots
+        Pushbots.sharedInstance().registerOnPushbots(deviceToken);
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Notification Registration Error: ", error);
     }
 
 }

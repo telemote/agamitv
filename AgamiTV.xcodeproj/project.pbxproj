@@ -23,6 +23,10 @@
 		805959DF1CEF998700863A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805959DD1CEF998700863A14 /* LaunchScreen.storyboard */; };
 		805959EA1CEF998700863A14 /* AgamitvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959E91CEF998700863A14 /* AgamitvTests.swift */; };
 		805959F51CEF998700863A14 /* AgamitvUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805959F41CEF998700863A14 /* AgamitvUITests.swift */; };
+		8059F6CA1D17E0520087CF5E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8059F6C91D17E0520087CF5E /* SystemConfiguration.framework */; };
+		8059F6CC1D17E05A0087CF5E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8059F6CB1D17E05A0087CF5E /* MobileCoreServices.framework */; };
+		8059F6CE1D17E0600087CF5E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8059F6CD1D17E0600087CF5E /* CoreTelephony.framework */; };
+		8059F6D11D17E09C0087CF5E /* Pushbots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8059F6D01D17E09C0087CF5E /* Pushbots.framework */; };
 		80699FB81CFE2936005C2BD7 /* LiveCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FB71CFE2936005C2BD7 /* LiveCVC.swift */; };
 		80699FBC1CFE3D30005C2BD7 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FBB1CFE3D30005C2BD7 /* EventCell.swift */; };
 		80699FBE1CFE3DBE005C2BD7 /* EventTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80699FBD1CFE3DBE005C2BD7 /* EventTVC.swift */; };
@@ -80,6 +84,11 @@
 		805959F01CEF998700863A14 /* AgamiTV.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgamiTV.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		805959F41CEF998700863A14 /* AgamitvUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgamitvUITests.swift; sourceTree = "<group>"; };
 		805959F61CEF998700863A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8059F6C91D17E0520087CF5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8059F6CB1D17E05A0087CF5E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8059F6CD1D17E0600087CF5E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8059F6D01D17E09C0087CF5E /* Pushbots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pushbots.framework; sourceTree = "<group>"; };
+		8059F6D21D17E2100087CF5E /* Agamitv-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Agamitv-Bridging-Header.h"; sourceTree = "<group>"; };
 		80699FB71CFE2936005C2BD7 /* LiveCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveCVC.swift; sourceTree = "<group>"; };
 		80699FBB1CFE3D30005C2BD7 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		80699FBD1CFE3DBE005C2BD7 /* EventTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTVC.swift; sourceTree = "<group>"; };
@@ -102,6 +111,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8059F6CE1D17E0600087CF5E /* CoreTelephony.framework in Frameworks */,
+				8059F6CC1D17E05A0087CF5E /* MobileCoreServices.framework in Frameworks */,
+				8059F6D11D17E09C0087CF5E /* Pushbots.framework in Frameworks */,
+				8059F6CA1D17E0520087CF5E /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +161,8 @@
 				805959E81CEF998700863A14 /* AgamitvTests */,
 				805959F31CEF998700863A14 /* AgamitvUITests */,
 				805959CF1CEF998700863A14 /* Products */,
+				8059F6CF1D17E06F0087CF5E /* Frameworks */,
+				8059F6D21D17E2100087CF5E /* Agamitv-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +218,17 @@
 				805959F61CEF998700863A14 /* Info.plist */,
 			);
 			path = AgamitvUITests;
+			sourceTree = "<group>";
+		};
+		8059F6CF1D17E06F0087CF5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8059F6D01D17E09C0087CF5E /* Pushbots.framework */,
+				8059F6CD1D17E0600087CF5E /* CoreTelephony.framework */,
+				8059F6CB1D17E05A0087CF5E /* MobileCoreServices.framework */,
+				8059F6C91D17E0520087CF5E /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,13 +293,21 @@
 		805959C61CEF998700863A14 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Agavi TV";
 				TargetAttributes = {
 					805959CD1CEF998700863A14 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = H8W335K377;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					805959E41CEF998700863A14 = {
 						CreatedOnToolsVersion = 7.1;
@@ -507,12 +541,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Agamitv/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "agamitv-test1";
 				PRODUCT_NAME = AgamiTV;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Agamitv-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -524,12 +562,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Agamitv/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "agamitv-test1";
 				PRODUCT_NAME = AgamiTV;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Agamitv-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

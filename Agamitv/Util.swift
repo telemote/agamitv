@@ -22,6 +22,8 @@ struct Constants {
 
 class Helper {
     
+    static var selectedTab = 1
+    
     static var tabs: [String] = ["Recent", "Videos", "Shows", "Upcoming", "About"]
     
     static func createOfflineVideoImage(drawText: NSString) -> UIImage {

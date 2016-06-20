@@ -25,7 +25,7 @@ class TabBarController: UITabBarController {
          //       item.image = image.imageWithRenderingMode(.AlwaysOriginal)
           //  }
        // }
-        self.selectedIndex = 0
+        self.selectedIndex = Helper.selectedTab
         getConfigFromServer()
     }
      //var tabs: [String] = []
