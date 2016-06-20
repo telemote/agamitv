@@ -70,7 +70,7 @@ class TabBarController: UITabBarController {
                             //live feed count
                             if(liveevents?.count > 0) {
                                 let x:Int = (liveevents?.count)!
-                                self.tabBar.items?[1].badgeValue = String(x)
+                                self.tabBar.items?[2].badgeValue = String(x)
                             }
                             if(events?.count > 0) {
                                 let x:Int = (events?.count)!

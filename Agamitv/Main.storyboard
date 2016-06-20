@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mxP-g3-l3Z" id="N8G-iY-nX0">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="105.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPf-Ka-s3i">
@@ -153,8 +153,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="rNh-JP-UfQ" kind="relationship" relationship="viewControllers" id="eQP-jL-zI1"/>
-                        <segue destination="Et5-xy-KfT" kind="relationship" relationship="viewControllers" id="Bi1-Je-mA4"/>
                         <segue destination="4lL-f2-jbt" kind="relationship" relationship="viewControllers" id="sda-8f-B2i"/>
+                        <segue destination="Et5-xy-KfT" kind="relationship" relationship="viewControllers" id="Bi1-Je-mA4"/>
                         <segue destination="KR9-E3-KC7" kind="relationship" relationship="viewControllers" id="Qcq-yO-MrU"/>
                         <segue destination="3YS-xt-Zv5" kind="relationship" relationship="viewControllers" id="Iiv-W2-cEb"/>
                     </connections>

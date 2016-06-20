@@ -195,14 +195,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
                     let liveevents = json["live"] as? [[String: AnyObject]]
                     let events = json["events"] as? [[String: AnyObject]]
                     
-                    // load paths
-                    var paths: [String] = []
-                    if let entries = json["paths"] as? [String] {
-                        for entry in entries {
-                            paths.append(entry)
-                        }
-                    }
-                    
+                                        
                     //load tabs
                     if let entries = json["tabs"] as? [String] {
                         Helper.tabs.removeAll()
@@ -215,8 +208,8 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
                         for entry in entries {
                             self.videos.append(
                                 VideoResource(
-                                    videoUrl: paths[1] + "/" + (entry["video"] as? String)!,
-                                    imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
+                                    videoUrl: (entry["video"] as? String)!,
+                                    imageUrl: (entry["image"] as? String)!,
                                     desc: (entry["desc"] as? String)!,
                                     date: (entry["date"] as? String)!
                                 )
@@ -236,7 +229,7 @@ class RecentCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
                             //live feed count
                             if(liveevents?.count > 0) {
                                 let x:Int = (liveevents?.count)!
-                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                                self.tabBarController!.tabBar.items?[2].badgeValue = String(x)
                             }
                             if(events?.count > 0) {
                                 let x:Int = (events?.count)!

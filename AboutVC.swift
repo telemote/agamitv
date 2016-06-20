@@ -99,7 +99,7 @@ class AboutVC: UIViewController {
                             //live feed count
                             if(liveevents?.count > 0) {
                                 let x:Int = (liveevents?.count)!
-                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                                self.tabBarController!.tabBar.items?[2].badgeValue = String(x)
                             }
                             if(events?.count > 0) {
                                 let x:Int = (events?.count)!

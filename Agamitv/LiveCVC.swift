@@ -31,7 +31,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         super.viewDidLoad()
         
         //add header
-        let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[1] as String).uppercaseString)
+        let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[2] as String).uppercaseString)
         self.view.addSubview(appheader)
         
         
@@ -216,20 +216,13 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
                         }
                     }
                     
-                    //load tabs
-                    if let entries = json["tabs"] as? [String] {
-                        Helper.tabs.removeAll()
-                        for entry in entries {
-                            Helper.tabs.append(entry)
-                        }
-                    }
                     
                     if let entries = json[self.categoryid] as? [[String: AnyObject]] {
                         for entry in entries {
                             self.videos.append(
                                 VideoResource(
                                     videoUrl: (entry["video"] as? String)!,
-                                    imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
+                                    imageUrl: (entry["image"] as? String)!,
                                     desc: (entry["desc"] as? String)!,
                                     date: (entry["date"] as? String)!
                                 )
@@ -249,7 +242,7 @@ class LiveCVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
                             //live feed count
                             if(liveevents?.count > 0) {
                                 let x:Int = (liveevents?.count)!
-                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                                self.tabBarController!.tabBar.items?[2].badgeValue = String(x)
                             }
                             if(events?.count > 0) {
                                 let x:Int = (events?.count)!

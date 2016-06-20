@@ -22,13 +22,26 @@ struct Constants {
 
 class Helper {
     
-    static var tabs: [String] = ["Recent", "Shows", "Videos", "Upcoming", "About"]
+    static var tabs: [String] = ["Recent", "Videos", "Shows", "Upcoming", "About"]
+    
+    static func createOfflineVideoImage(drawText: NSString) -> UIImage {
+        
+        let imageWithCircle = drawPlayButtonWaterMark(inImage: UIImage(named: "300300.png")!,
+                                                      playImage: UIImage(named: "play100black.png")!,
+                                                      alpha: 1.0)
+        return textToImage(drawText,
+                           inImage: imageWithCircle,
+                           atPoint: CGPointMake(10, imageWithCircle.size.height*5/6),
+                           textColor: UIColor.blackColor())
+    }
     
     static func createUnselectedVideoImage(drawText: NSString, inImage: UIImage) -> UIImage {
         
-        let imageWithCircle = drawPlayButtonWaterMark(inImage: inImage,
+        var imageWithCircle = drawPlayButtonWaterMark(inImage: inImage,
                                                       playImage: UIImage(named: "circle96black.png")!,
                                                       alpha: 0.4)
+        
+        imageWithCircle = Helper.imageWithGradient(imageWithCircle)
         return textToImage(drawText,
                            inImage: drawPlayButtonWaterMark(inImage: imageWithCircle,
                                                             playImage: UIImage(named: "play100white.png")!,
@@ -38,9 +51,10 @@ class Helper {
     }
     
     static func createSelectedVideoImage(drawText: NSString, inImage: UIImage) -> UIImage {
-        let imageWithCircle = drawPlayButtonWaterMark(inImage: inImage,
+        var imageWithCircle = drawPlayButtonWaterMark(inImage: inImage,
                                                       playImage: UIImage(named: "circle96black.png")!,
                                                       alpha: 0.4)
+        imageWithCircle = Helper.imageWithGradient(imageWithCircle)
         return textToImage(drawText,
                            inImage: drawPlayButtonWaterMark(inImage: imageWithCircle,
                                                             playImage: UIImage(named: "play100red.png")!,
@@ -63,7 +77,7 @@ class Helper {
         let locations:[CGFloat] = [0.80, 1.0]
         //1 = opaque
         //0 = transparent
-        let bottom = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).CGColor
+        let bottom = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).CGColor
         let top = UIColor(red: 0, green: 0, blue: 0, alpha: 0).CGColor
         
         let gradient = CGGradientCreateWithColors(colorSpace, [top, bottom], locations)
@@ -86,7 +100,8 @@ class Helper {
         foreGroundImage .drawInRect(CGRectMake(point.x, point.y, foreGroundImage.size.width, foreGroundImage.size.height), blendMode: CGBlendMode.Normal, alpha: imageAlpha)
         var newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return Helper.imageWithGradient(newImage)
+        return newImage
+        //return Helper.imageWithGradient(newImage)
     }
     
     
@@ -96,7 +111,7 @@ class Helper {
         
         // Setup the font specific variables
         //var textColor: UIColor = UIColor.whiteColor()
-        var textFont: UIFont = UIFont(name: "AvenirNext-Bold", size: 18.0)!
+        var textFont: UIFont = UIFont(name: "AvenirNext-Bold", size: 17.0)!
         
         //Setup the image context using the passed image.
         let scale = UIScreen.mainScreen().scale

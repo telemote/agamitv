@@ -20,7 +20,7 @@ import AVFoundation
         var collectionView: UICollectionView?
         weak var activityIndicatorView: UIActivityIndicatorView!
 
-        var categoryid:String = "fashion"
+        var categoryid:String = "music"
         var categoryname:String = ""
         var smallbox:CGFloat = 147.0
         var mediumbox:CGFloat = 174.0
@@ -37,14 +37,14 @@ import AVFoundation
 
             
             // add header
-            let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[2] as String).uppercaseString)
+            let appheader = Helper.getAppHeder(self.view, headerText: (Helper.tabs[1] as String).uppercaseString)
             self.view.addSubview(appheader)
             
             // add video categories
             // Initialize
             let items = ["DRAMA", "FASHION", "MUSIC", "MORE"]
             segmentedControl = UISegmentedControl(items: items)
-            segmentedControl.selectedSegmentIndex = 1
+            segmentedControl.selectedSegmentIndex = 2
             
             // Set up Frame and SegmentedControl
             let frame = UIScreen.mainScreen().bounds
@@ -171,7 +171,7 @@ import AVFoundation
             } else {
                 // Not cached, so load then fade it in.
                 cell.imageView.alpha = 0
-                cell.backGround.image = UIImage(named: "300300.png")
+                cell.backGround.image = Helper.createOfflineVideoImage(self.videos[indexPath.row].desc)
                 cell.backGround.alpha=1
                 cell.imageUrl.fetchImage { image in
                     // Check the cell hasn't recycled while loading.
@@ -246,15 +246,7 @@ import AVFoundation
                         let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                         let liveevents = json["live"] as? [[String: AnyObject]]
                         let events = json["events"] as? [[String: AnyObject]]
-                        
-                        // load paths
-                        var paths: [String] = []
-                        if let entries = json["paths"] as? [String] {
-                            for entry in entries {
-                                paths.append(entry)
-                            }
-                        }
-                        
+                                        
                         //load tabs
                         if let entries = json["tabs"] as? [String] {
                             Helper.tabs.removeAll()
@@ -267,8 +259,8 @@ import AVFoundation
                             for entry in entries {
                                 self.videos.append(
                                     VideoResource(
-                                        videoUrl: paths[1] + "/" + (entry["video"] as? String)!,
-                                        imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
+                                        videoUrl:  (entry["video"] as? String)!,
+                                        imageUrl:  (entry["image"] as? String)!,
                                         desc: (entry["desc"] as? String)!,
                                         date: (entry["date"] as? String)!
                                     )
@@ -288,7 +280,7 @@ import AVFoundation
                                 //live feed count
                                 if(liveevents?.count > 0) {
                                     let x:Int = (liveevents?.count)!
-                                    self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                                    self.tabBarController!.tabBar.items?[2].badgeValue = String(x)
                                 }
                                 if(events?.count > 0) {
                                     let x:Int = (events?.count)!

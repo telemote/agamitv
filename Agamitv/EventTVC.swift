@@ -82,14 +82,6 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     let liveevents = json["live"] as? [[String: AnyObject]]
                     let events = json["events"] as? [[String: AnyObject]]
                     
-                    // load paths
-                    var paths: [String] = []
-                    if let entries = json["paths"] as? [String] {
-                        for entry in entries {
-                            paths.append(entry)
-                        }
-                    }
-                    
                     //load tabs
                     if let entries = json["tabs"] as? [String] {
                         Helper.tabs.removeAll()
@@ -103,7 +95,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                             self.videos.append(
                                 VideoResource(
                                     videoUrl: "",
-                                    imageUrl: paths[0] + "/" + (entry["image"] as? String)!,
+                                    imageUrl: (entry["image"] as? String)!,
                                     desc: (entry["desc"] as? String)!,
                                     date: (entry["date"] as? String)!
                                 )
@@ -123,7 +115,7 @@ class EventTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                             //live feed count
                             if(liveevents?.count > 0) {
                                 let x:Int = (liveevents?.count)!
-                                self.tabBarController!.tabBar.items?[1].badgeValue = String(x)
+                                self.tabBarController!.tabBar.items?[2].badgeValue = String(x)
                             }
                             if(events?.count > 0) {
                                 let x:Int = (events?.count)!
